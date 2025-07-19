@@ -62,5 +62,32 @@ int main()
         }
         printf("%s\n",str);
 }```
-
-
+## 3.program to find maximum character in sentence
+'''c
+#include<stdio.h>
+int main()
+{
+        char str[100];
+        printf("enter the string name");
+        fgets(str,sizeof(str),stdin);
+        int max=1;
+        for(int i=0;str[i]!='\0';i++)
+        {
+                int count=1;
+                int arr[i];
+                for(int j=i+1;str[j]!='\0';j++)
+                {
+                        if(str[i]==str[j])
+                        {
+                                count++;
+                        }
+                }
+                if(count>max)
+                {
+                        max=count;
+                        printf("%d is maximum=%c\n",,str[i]);
+                }
+        }
+        printf("%d is maximum=%c",max,);
+}
+'''
