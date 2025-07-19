@@ -61,7 +61,8 @@ int main()
                 }
         }
         printf("%s\n",str);
-}```
+}
+```
 ## 3.program to find maximum character in sentence
 '''c
 #include<stdio.h>
