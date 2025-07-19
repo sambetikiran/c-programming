@@ -64,7 +64,7 @@ int main()
 }
 ```
 ## 3.program to find maximum character in sentence
-'''c
+```c
 #include<stdio.h>
 int main()
 {
@@ -91,4 +91,4 @@ int main()
         }
         printf("%d is maximum=%c",max,);
 }
-'''
+```
