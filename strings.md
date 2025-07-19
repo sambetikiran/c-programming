@@ -38,7 +38,7 @@ void stri(char str[])
 }
 ```
 ## 2.program to replace ' 'with ',' in a sentence
-#include<stdio.h>
+```#include<stdio.h>
 #include<string.h>
 int main()
 {
@@ -60,6 +60,6 @@ int main()
                 }
         }
         printf("%s\n",str);
-}
+}```
 
 
