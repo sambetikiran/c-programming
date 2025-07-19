@@ -1,6 +1,6 @@
 ## 1.program to COUNT no.of words in a string
 ```c
-include<stdio.h>
+#include<stdio.h>
 #include<string.h>
 void stri(char[]);
 int main()
@@ -37,3 +37,29 @@ void stri(char str[])
         printf("the number of words is =%d",count);
 }
 ```
+## 2.program to replace ' 'with ',' in a sentence
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[100];
+        printf("enter the sentence");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        for(int i=0; ;i++)
+        {
+                if(str[i]==' ')
+                {
+                        str[i]=',';
+                }
+                if(str[i]=='\0')
+                {
+                        str[i]='.';
+                        str[i+1]='\0';
+                        break;
+                }
+        }
+        printf("%s\n",str);
+}
+
+
