@@ -81,3 +81,28 @@ int main()
         printf("\n");
 }
 ```
+## 4.program to rotate an array to right shifting
+```c
+#include<stdio.h>
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        int arr[num];
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        int temp=arr[num-1];
+        for(int i=num-1;i>0;i--)
+        {
+                arr[i]=arr[i-1];
+        }
+        arr[0]=temp;
+        for(int i=0;i<num;i++)
+        {
+                printf("%d\t",arr[i]);
+        }
+}
+```
