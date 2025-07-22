@@ -106,3 +106,26 @@ int main()
         }
 }
 ```
+## 4.program to rotate left to an array of K positions
+```c
+#include<stdio.h>
+int main()
+{
+        int num=5;
+        int arr[5]={1,2,3,4,5};
+        int k=3;
+        for(int i=0;i<k;i++)
+        {
+                int temp=arr[0];
+                for(int j=0;j<num-1;j++)
+                {
+                        arr[j]=arr[j+1];
+                }
+                arr[num-1]=temp;
+        }
+        for(int i=0;i<num;i++)
+        {
+                printf("%d",arr[i]);
+        }
+}
+```
