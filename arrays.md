@@ -106,7 +106,7 @@ int main()
         }
 }
 ```
-## 4.program to rotate left to an array of K positions
+## 4.program to rotate left an array of K positions
 ```c
 #include<stdio.h>
 int main()
@@ -124,6 +124,29 @@ int main()
                 arr[num-1]=temp;
         }
         for(int i=0;i<num;i++)
+        {
+                printf("%d",arr[i]);
+        }
+}
+```
+## 5.program to rotate right an array of K positions
+```c
+#include<stdio.h>
+int main()
+{
+        int n=5;
+        int arr[5]={1,2,3,4,5};
+        int k=3;
+        for(int i=0;i<k;i++)
+        {
+                int temp=arr[n-1];
+                for( int j=n-1;j>0;j--)
+                {
+                        arr[j]=arr[j-1];
+                }
+                arr[0]=temp;
+        }
+        for(int i=0;i<n;i++)
         {
                 printf("%d",arr[i]);
         }
