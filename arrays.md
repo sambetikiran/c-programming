@@ -55,7 +55,7 @@ int main()
         }
 }
 ```
-## 3.program to rotate an array to left by  using swaping
+## 3.program to rotate an array to left by  using shifting
 ```c
 #include<stdio.h>
 int main()
