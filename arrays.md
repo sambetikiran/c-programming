@@ -30,7 +30,7 @@ void delete(int arr[],int num,int pos)
         }
 }
 ```
-## 2.program to rotate an array to left
+## 2.program to rotate an array to left by  using swaping
 ```c
 #include<stdio.h>
 int main()
@@ -53,5 +53,31 @@ int main()
         {
                 printf("%d\t",arr[i]);
         }
+}
+```
+## 3.program to rotate an array to left by  using swaping
+```c
+#include<stdio.h>
+int main()
+{
+        int num;
+        printf("enter the number:");
+        scanf("%d",&num);
+        int arr[num];
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        int temp=arr[0];
+        for(int i=0;i<num-1;i++)
+        {
+                arr[i]=arr[i+1];
+        }
+        arr[num-1]=temp;
+        for(int i=0;i<num;i++)
+        {
+                printf("%d\t",arr[i]);
+        }
+        printf("\n");
 }
 ```
