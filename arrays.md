@@ -29,6 +29,29 @@ void delete(int arr[],int num,int pos)
                 printf("%d",arr[j]);
         }
 }
-
-
+```
+## 2.program to rotate an array to left
+```c
+#include<stdio.h>
+int main()
+{
+        int num;
+        printf("enter  the number:");
+        scanf("%d",&num);
+        int arr[num];
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        for(int i=0;i<num-1;i++)
+        {
+                int temp=arr[i];
+                arr[i]=arr[i+1];
+                arr[i+1]=temp;
+        }
+        for(int i=0;i<num;i++)
+        {
+                printf("%d\t",arr[i]);
+        }
+}
 ```
