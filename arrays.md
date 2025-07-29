@@ -253,3 +253,61 @@ int duplicate(int arr[],int num)
         return count;
 }
 ```
+## 9.Convert a square matrix into its 2D prefix sum matrix and print the result
+```c
+#include<stdio.h>
+#define size 100
+void sum(int[][100],int);
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        int arr[size][size];
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        sum(arr,num);
+}
+void sum(int arr[][100],int num)
+{
+        int sum;
+        for(int i=0;i<num;i++)
+        {
+                sum=0;
+                for(int j=0;j<num;j++)
+                {
+                        sum+=arr[i][j];
+                        arr[i][j]=sum;
+                        printf("%d1\t",arr[i][j]);
+                }
+        }
+        printf("\n");
+        int k=0,r=0;
+        for(int i=0;i<num;i++)
+        {
+                sum=0;
+                for(int j=0;j<num;j++)
+                {
+                        sum+=arr[j][i];
+                        arr[k++][r++]=sum;
+                        printf("%d2\t",arr[k][r]);
+
+                }
+        }
+        printf("\n");
+        printf("\n");
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        printf("%d3\t",arr[i][j]);
+                }
+        }
+        printf("\n");
+}
+```
