@@ -152,3 +152,104 @@ int main()
         }
 }
 ```
+## 6.write a program to print the missing number in sorted array
+```c
+#include<stdio.h>
+int main()
+{
+        int num;
+        printf("enter the number:");
+        scanf("%d",&num);
+        int arr[num];
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        int flag;
+        for(int i=0;i<num;i++)
+        {
+                flag=0;
+                for(int j=0;j<num;j++)
+                {
+                        if(arr[j]==i)
+                        {
+                                //printf("%d\t",arr[i]);
+                                flag=1;
+                                break;
+                        }
+                }
+                if(flag==0)
+                {
+                        printf("%d\t",i);
+                }
+        }
+        printf("\n");
+}
+```
+## 7.write a program print maximum sum of subarray k=4 using windowsliding method
+```c
+#include<stdio.h>
+int main()
+{
+        int num;
+        printf("enter the number:");
+        scanf("%d",&num);
+        int k=4;
+        int arr[num];
+        printf("enter the array elements:");
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        int sum=0;
+        for(int i=0;i<k;i++)
+        {
+                sum=sum+arr[i];
+        }
+        int ws=sum;
+        int max=sum,max1;
+        for(int i=k;i<num;i++)
+        {
+                ws=ws-arr[i-k]+arr[i];
+                max1=ws;
+                if(max>max1)
+                {
+                        max1=max;
+                }
+        }
+        printf("maximum sum=%d\n",max1);
+}
+```
+## 8.write a program to remove duplicate element in an array
+```c
+#include<stdio.h>
+int duplicate(int[],int);
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        int arr[num];
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        int count=duplicate(arr,num);
+        printf("%d\n",count);
+}
+int duplicate(int arr[],int num)
+{
+        int count=0;
+        or(int i=0;i<num;i++)
+        {
+                for(int j=i+1;j<num;j++)
+                {
+                        if(arr[i]==arr[j])
+                        {
+                                count++;
+                        }
+                }
+        }
+        return count;
+}
+```
