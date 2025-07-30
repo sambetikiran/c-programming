@@ -384,4 +384,78 @@ int main()
         display();
 }
 ```
-
+## 5.program to right rotate left in list
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+        int data;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void create(int d)
+{
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL)
+        {
+                printf("malloc errror");
+                return;
+        }
+        pnew->data=d;
+        pnew->nxt=NULL;
+        if(phead==NULL)
+        {
+                phead=pnew;
+        }
+        else
+        {
+                ptrav=phead;
+                while(ptrav->nxt!=NULL)
+                {
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+       }
+}
+void rotate_left(int pos)
+{
+        struct node *ptrav,*ptemp,*pt;
+        ptrav=phead;
+        ptemp=phead;
+        phead=ptrav->nxt;
+        while(ptrav->nxt!=NULL)
+        {
+                ptrav=ptrav->nxt;
+        }
+        ptrav->nxt=ptemp;
+        ptemp->nxt=NULL;
+}
+void display()
+{
+        struct node *ptrav;
+        ptrav=phead;
+        while(ptrav!=NULL)
+        {
+                printf("%d->",ptrav->data);
+                ptrav=ptrav->nxt;
+        }
+        printf("\n");
+}
+int main()
+{
+        int node,d;
+        printf("enter the node");
+        scanf("%d",&node);
+        printf("enter the values");
+        for( int i=0;i<node;i++)
+        {
+                scanf("%d",&d);
+                create(d);
+        }
+        display();
+        rotate_left(pos);
+        display();
+}
+```
