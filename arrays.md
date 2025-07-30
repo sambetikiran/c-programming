@@ -311,3 +311,35 @@ void sum(int arr[][100],int num)
         printf("\n");
 }
 ```
+## 10.Write a program to delete a position in an array
+```c
+#include<stdio.h>
+void delete_pos(int [],int,int  );
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        int arr[num];
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        printf("enter the postion");
+        int pos;
+        scanf("%d",&pos);
+        delete_pos(arr,num,pos);
+}
+void delete_pos(int arr[],int num,int pos)
+{
+        for(int i=pos;i<num;i++)
+        {
+                arr[i]=arr[i+1];
+        }
+        num--;
+        for(int i=0;i<num;i++)
+        {
+                printf("%d\t",arr[i]);
+        }
+}
+```
