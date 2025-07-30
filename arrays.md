@@ -343,3 +343,89 @@ void delete_pos(int arr[],int num,int pos)
         }
 }
 ```
+## 11.write a program to print sum of elements in 2D array
+```c
+#include<stdio.h>
+int sum_matrix(int row,int col,int arr[row][col])
+{
+        int sum=0;
+        for(int i=0;i<row;i++)
+        {
+                for( int j=0;j<col;j++)
+                {
+                        sum=sum+arr[i][j];
+                        printf("%d ",sum);
+                }
+        }
+        return sum;
+}
+int main()
+{
+        int row;
+        printf("enter the row");
+        scanf("%d",&row);
+        int col;
+        printf("enter the column");
+        scanf("%d",&col);
+        int arr[row][col];
+        for(int i=0;i<row;i++)
+        {
+                for(int j=0;j<col;j++)
+                {
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        int sumi=sum_matrix(row,col,arr);
+        printf("%d\n",sumi);
+}
+```
+## 12. program to find sum of two matrices
+```c
+#include<stdio.h>
+void two_sum(int row,int col,int first[row][col],int sec[row][col])
+{
+        int sum[row][col];
+        for(int i=0;i<row;i++)
+        {
+                for( int j=0;j<col;j++)
+                {
+                        sum[i][j]=first[i][j]+sec[i][j];
+                }
+        }
+        for(int i=0;i<row;i++)
+        {
+                for( int j=0;j<col;j++)
+                {
+                        printf("%d\t",sum[i][j]);
+                }
+                printf("\n");
+        }
+}
+int main()
+{
+        int row,col;
+        printf("enter the row");
+        scanf("%d",&row);
+        printf("enter the column");
+        scanf("%d",&col);
+        int first[row][col];
+        for(int i=0;i<row;i++)
+        {
+                for( int j=0;j<col;j++)
+                {
+                        scanf("%d",&first[i][j]);
+                }
+        }
+        printf("enter the second ");
+        int sec[row][col];
+        for(int i=0;i<row;i++)
+        {
+                for( int j=0;j<col;j++)
+                {
+                        scanf("%d",&sec[i][j]);
+                }
+        }
+        two_sum(row,col,first,sec);
+}
+```
+
