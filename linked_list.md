@@ -204,3 +204,184 @@ int main()
         display();
 }
 ```
+## 3.program to delete first node in the list
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+        int data;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void create(int d)
+{
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL)
+        {
+                printf("malloc error");
+        }
+        pnew->data=d;
+        pnew->nxt=NULL;
+        if(phead==NULL)
+        {
+                phead=pnew;
+                printf("node is added:");
+        }
+        else
+        {
+                ptrav=phead;
+                while(ptrav->nxt!=NULL)
+                {
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+        return;
+        printf("\n");
+}
+void deleteHead()
+{
+        struct node *ptrav;
+        ptrav=phead;
+        if(ptrav==NULL)
+        {
+                printf("the list is empty");
+                return;
+        }
+        else
+        {
+                phead=ptrav->nxt;
+                free(ptrav);
+        }
+        return;
+}
+void display()
+{
+        struct node *ptrav;
+        ptrav=phead;
+        if(ptrav==NULL)
+        {
+                printf("the list is empty");
+                return;
+        }
+        else
+        {
+                while(ptrav!=NULL)
+                {
+                        printf("->%d",ptrav->data);
+                        ptrav=ptrav->nxt;
+                }
+                printf("\n");
+        }
+}
+int main()
+{
+        create(1);
+        create(2);
+        create(3);
+        create(4);
+        create(5);
+        display();
+        deleteHead();
+        display();
+}
+```
+## 4.program to insert head to the list
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+        int data;
+        struct node*nxt;
+};
+struct node *phead=NULL;
+void create(int d)
+{
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL)
+        {
+                printf("malloc errror");
+                return;
+        }
+        pnew->data=d;
+        pnew->nxt=NULL;
+        if(phead==NULL)
+        {
+                printf("node is created\n");
+                phead=pnew;
+                return;
+        }
+        else
+        {
+                ptrav=phead;
+                while(ptrav->nxt!=NULL)
+                {
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+                return;
+        }
+        printf("\n");
+}
+void display()
+{
+        struct node *ptrav;
+        ptrav=phead;
+        if(ptrav==NULL)
+        {
+                printf("the list is empty");
+                return;
+        }
+        else
+        {
+                while(ptrav!=NULL)
+                {
+                        printf("->%d",ptrav->data);
+                        ptrav=ptrav->nxt;
+                }
+                printf("\n");
+        }
+}
+
+void insertnode(int d)
+{
+        struct node *pnew;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL)
+        {
+                printf("malloc error");
+                return;
+        }
+        pnew->data=d;
+        pnew->nxt=NULL;
+        if(phead==NULL)
+        {
+                printf("the new node added");
+                phead=pnew;
+        }
+        else
+        {
+                pnew->nxt=phead;
+                phead=pnew;
+        }
+        return;
+}
+int main()
+{
+        create(1);
+        create(2);
+        create(3);
+        create(4);
+        create(5);
+        create(6);
+        create(7);
+        display();
+        insertnode(10);
+        display();
+}
+```
+
