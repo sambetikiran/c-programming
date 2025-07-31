@@ -428,4 +428,91 @@ int main()
         two_sum(row,col,first,sec);
 }
 ```
+## 13.program to transpose matrix using two arrays
+```c
+#include<stdio.h>
+#define max 100
+int rotate(int,int,int first[][100],int sec[][100]);
+int main()
+{
+        int row,col;
+        printf("enter the row");
+        scanf("%d",&row);
+        printf("enter the col");
+        scanf("%d",&col);
+        int first[row][col],sec[row][col];
+        for( int i=0;i<row;i++)
+        {
+                for(int j=0;j<col;j++)
+                {
+                        scanf("%d",&first[i][j]);
+                }
+        }
+        rotate(row,col,first,sec);
+        for( int i=0;i<row;i++)
+        {
+                for(int j=0;j<col;j++)
+                {
+                        printf("%d\t",sec[i][j]);
+                }
+                printf("\n");
+        }
+
+}
+int  rotate(int row,int col,int first[row][col],int sec[row][col])
+{
+        for(int i=0;i<row;i++)
+        {
+                for( int j=0;j<col;j++)
+                {
+                        sec[j][i]=first[i][j];
+                }
+        }
+        return sec;
+}
+```
+## 14.program to print transpose matrix within same array
+```c
+include<stdio.h>
+#define max 100
+int rotate(int,int,int first[][100]);
+int main()
+{
+        int row,col;
+        printf("enter the row");
+        scanf("%d",&row);
+        printf("enter the col");
+        scanf("%d",&col);
+        int first[row][col];
+        for( int i=0;i<row;i++)
+        {
+                for(int j=0;j<col;j++)
+                {
+                        scanf("%d",&first[i][j]);
+                }
+        }
+        rotate(row,col,first);
+        for( int i=0;i<row;i++)
+        {
+                for(int j=0;j<col;j++)
+                {
+                        printf("%d\t",first[i][j]);
+                }
+                printf("\n");
+        }
+
+}
+int  rotate(int row,int col,int first[row][col])
+{
+        for(int i=0;i<row;i++)
+        {
+                for( int j=i+1;j<col;j++)
+                {
+                        int temp=first[i][j];
+                        first[i][j]=first[j][i];
+                        first[j][i]=temp;
+                }
+        }
+}
+```
 
