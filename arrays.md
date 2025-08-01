@@ -547,4 +547,65 @@ int main()
     return 0;
 }
 ```
+## 16.program to rotate matrix 90 clockwise 
+```c
+#include<stdio.h>
+#define max 100
+int rotate_clock(int ,int,int [][max]);
+int main()
+{
+        int row;
+        printf("enter the row");
+        scanf("%d",&row);
+        int col;
+        printf("enter the col");
+        scanf("%d",&col);
+        int first[row][col];
+        for( int i=0;i<row;i++)
+        {
+                for( int j=0;j<col;j++)
+        {
+                        scanf("%d",&first[i][j]);
+                }
+        }
+        rotate_clock(row,col,first);
+        for( int i=0;i<row;i++)
+        {
+                for( int j=0;j<col;j++)
+                {
+                        printf("%d\t",first[i][j]);
+                }
+                printf("\n");
+        }
+}
+int rotate_clock(int row,int col,int first[row][col])
+{
+        for(int i=0;i<row;i++)
+        {
+                for( int j=i+1;j<col;j++)
+                {
+                        int temp=first[i][j];
+                        first[i][j]=first[j][i];
+                        first[j][i]=temp;
+                }
+        }
+        for( int i=0;i<row;i++)
+        {
+                for( int j=0;j<col;j++)
+                {
+                        printf("%d\t",first[i][j]);
+                }
+                printf("\n");
+        }
 
+        for( int i=0;i<row;i++)
+        {
+                for( int j=0;j<col/2;j++)
+                {
+                        int temp=first[i][j];
+                        first[i][j]=first[i][col-j-1];
+                        first[i][col-j-1]=temp;
+                }
+        }
+}
+```
