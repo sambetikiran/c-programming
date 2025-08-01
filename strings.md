@@ -92,3 +92,27 @@ int main()
         printf("%d is maximum=%c",max,);
 }
 ```
+## 4.program to print all only alphabets in a string
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char sent[100];
+        printf("enter the string:");
+        fgets(sent,sizeof(sent),stdin);
+        int len=strlen(sent);
+        char alp[100];
+        int k=0;
+        for(int i=0;sent[i]!='\0';i++)
+        {
+                if(sent[i]>='a'&&sent[i]<='z'||sent[i]>='A'&&sent[i]<='Z')
+                {
+                        alp[k++]=sent[i];
+                }
+        }
+        alp[k]='\0';
+        printf("%s",alp);
+
+}
+```
