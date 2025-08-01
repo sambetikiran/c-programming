@@ -515,4 +515,36 @@ int  rotate(int row,int col,int first[row][col])
         }
 }
 ```
+## 15 program to reverse an array using recurrsion function
+```c
+#include <stdio.h>
+void reverse(int arr[], int i, int j)
+{
+    if (i >= j)
+        return;
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+    reverse(arr, i + 1, j - 1);
+}
+
+int main()
+{
+    int num;
+    printf("enter number:");
+    scanf("%d", &num);
+    int arr[num];
+    printf("enter the array:");
+    for (int i = 0; i < num; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+    reverse(arr, 0, num - 1);
+    for (int i = 0; i < num; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
+```
 
