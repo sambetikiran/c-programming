@@ -140,4 +140,30 @@ int main()
         }
 }
 ```
+## program to print the most repeating character
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[100];
+        printf("enter the string");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int count[256]={0};
+        for(int i=0;str[i]!='\0';i++)
+        {
+                count[(unsigned char)str[i]]++;
+        }
+        int max=0,k=0;
+        for(int i=0;str[i]!='\0';i++)
+        {
+                if( count[(unsigned char)str[i]]>max)
+                {
+                        max=count[(unsigned char)str[i]];
+                        printf("%c is max character of %d",str[i],max);
+                }
+        }
+}
+```
 
