@@ -116,4 +116,28 @@ int main()
 
 }
 ```
-## 5.program
+## 5.program to find non repeating character
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[100];
+        printf("enter the string");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int count[256]={0};
+        for( int i=0;str[i]!='\0';i++)
+        {
+                count[(unsigned char)str[i]]++;
+        }
+        for( int i=0;str[i]!='\0';i++)
+        {
+                if(count[str[i]]==1)
+                {
+                        printf("%c",str[i]);
+                }
+        }
+}
+```
+
