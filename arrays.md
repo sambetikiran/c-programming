@@ -609,3 +609,56 @@ int rotate_clock(int row,int col,int first[row][col])
         }
 }
 ```
+## 17. find given string is symmetric or not 
+```c
+#include<stdio.h>
+#define max 100
+int sym(int num,int arr[num][num])
+{
+        int found=0;
+        for( int i=0;i<num;i++)
+        {
+                for( int j=i+1;j<num;j++)
+                {
+                        if( arr[i][j]!=arr[j][i])
+                        {
+                                return 0;
+                        }
+                }
+        }
+        return 1;
+}
+
+
+int main()
+{
+        int num;
+        printf("enter the row");
+        scanf("%d",&num);
+        int arr[num][num];
+        for(int i=0;i<num;i++)
+        {
+                for( int j=0;j<num;j++)
+                {
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        for(int i=0;i<num;i++)
+        {
+                for( int j=0;j<num;j++)
+                {
+                        printf("%d\t",arr[i][j]);
+                }
+                printf("\n");
+        }
+        int s=sym(num,arr);
+        if(s==1)
+        {
+                printf("it is a symtric");
+        }
+        else
+        {
+                printf("it is not symmetric");
+        }
+}
+```
