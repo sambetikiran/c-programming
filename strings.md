@@ -140,7 +140,7 @@ int main()
         }
 }
 ```
-## program to print the most repeating character
+## 6.program to print the most repeating character
 ```c
 #include<stdio.h>
 #include<string.h>
@@ -166,4 +166,39 @@ int main()
         }
 }
 ```
-
+## 7. program to print longest non repeating character in a string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[100];
+        printf("enter the string");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int count[256];
+        for( int i=0;i<256;i++)
+        {
+                count[i]=-1;
+        }
+        int maxlen=0,start=0,maxstart=0;
+        for( int i=0;str[i]!='\0';i++)
+        {
+                if(count[str[i]]>=start)
+                {
+                        start=count[str[i]]+1;
+                }
+                count[str[i]]=i;
+                if( i-start+1>maxlen)
+                {
+                        maxlen=i-start+1;
+                        maxstart=start;
+                }
+        }
+        printf("longest no repeating are:");
+        for( int i=maxstart;i<maxstart+maxlen;i++)
+        {
+                printf("%ci\n",str[i]);
+        }
+}
+'''
