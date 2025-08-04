@@ -662,3 +662,53 @@ int main()
         }
 }
 ```
+## 18.program to write rotate 180 degree 
+```c
+#include<stdio.h>
+int rotate_180c(int num,int arr[num][num])
+{
+        for( int i=0;i<num;i++)
+        {
+                for( int j=i+1;j<num;j++)
+                {
+                        int temp=arr[i][j];
+                        arr[i][j]=arr[j][i];
+                        arr[j][i]=temp;
+                }
+        }
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num/2;j++)
+                {
+                        int temp=arr[j][i];
+                        arr[j][i]=arr[num-i-1][num-j-1];
+                        arr[num-1-i][num-j-1]=temp;
+                }
+        }
+}
+
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        int arr[num][num];
+        for( int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        rotate_180c(num,arr);
+        rotate_180c(num,arr);
+        for( int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        printf("%d\t",arr[i][j]);
+                }
+                printf("\n");
+        }
+}
+```
