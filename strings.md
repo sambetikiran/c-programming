@@ -203,9 +203,6 @@ int main()
 }
 '''
 ## 8.Write a C program to reverse a string using a pointer.
-Constraints:
-Do not use built-in string functions like strrev().
-Use pointer arithmetic only (no array indexing like str[i]).
 ```c
 #include<stdio.h>
 #include<string.h>
