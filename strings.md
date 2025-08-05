@@ -235,3 +235,42 @@ int reverse(char *str)
         }
 }
 ```
+## 9.Write a C program to count the number of vowels, consonants, digits, and special characters in a given
+```c
+#include<stdio.h>
+#include<string.h>
+void countt(char[]);
+int main()
+{
+        char str[100];
+        printf("enter the number");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        countt(str);
+}
+void countt(char str[])
+{
+        int digit_count=0;
+        int char_count=0;
+        int spl_count=0;
+        for( int i=0;i<str[i]!='\0';i++)
+        {
+                if( str[i]>='0'&&str[i]<='9')
+                {
+                        digit_count++;
+                }
+                else if(str[i]>='a' &&str[i]<='z'|| str[i]>='A' &&str[i]<='Z')
+                {
+                        char_count++;
+                }
+                else
+                {
+                        spl_count++;
+                }
+        }
+        printf("digit count=%d\n",digit_count);
+        printf("character count=%d\n",char_count);
+        printf("special count=%d\n",spl_count);
+
+}
+```
