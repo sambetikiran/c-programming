@@ -459,3 +459,104 @@ int main()
         display();
 }
 ```
+## 6.Loop Creation and Detection in Linked List
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+        int data;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void create(int d)
+{
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL)
+        {
+                printf("malloc error");
+                return;
+        }
+        pnew->data=d;
+        pnew->nxt=NULL;
+        if(phead==NULL)
+        {
+                phead=pnew;
+                printf("node added");
+        }
+        else
+        {
+                ptrav=phead;
+                while(ptrav->nxt!=NULL)
+                {
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void display()
+{
+        struct node *ptrav;
+        ptrav=phead;
+        if(ptrav==NULL)
+        {
+                printf("the list is empty");
+                return;
+        }
+        else
+        {
+                while(ptrav!=NULL)
+                {
+                        printf("%p\t",ptrav);
+                        printf("%d\t",ptrav->data);
+                        ptrav=ptrav->nxt;
+                }
+        }
+}
+void loopcreate(int target)
+{
+        struct node *ptrav,*ptemp;
+        ptemp=phead;
+        ptrav=phead;
+        while(ptrav->nxt!=NULL)
+        {
+                if(ptrav->data==target)
+                {
+                        ptemp=ptrav;
+                }
+                ptrav=ptrav->nxt;
+        }
+        ptrav->nxt=ptemp;
+}
+void addrloop(struct node *pp)
+{
+        struct node *ptrav,*ptemp;
+        ptrav=phead;
+        while( ptrav->nxt!=NULL)
+        {
+                ptrav=ptrav->nxt;
+        }
+        ptrav->nxt=pp;
+}
+
+
+
+int main()
+{
+        int node,d;
+        printf("enter the node count");
+        scanf("%d",&node);
+        for(int i=0;i<node;i++)
+        {
+                scanf("%d",&d);
+                create(d);
+        }
+        display();
+        //loopcreate(target);
+        //display();
+        addrloop(phead->nxt);
+        display();
+
+}
+```
