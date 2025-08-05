@@ -202,7 +202,7 @@ int main()
         }
 }
 ```
-##8.write a program to reverse a string using pointers without using library
+## 8.write a program to reverse a string using pointers without using library
 ```c
 #include<stdio.h>
 #include<string.h>
