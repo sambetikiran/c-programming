@@ -274,3 +274,47 @@ void countt(char str[])
 
 }
 ```
+## 10. write a C program to sort string in an array
+```c
+#include<string.h>
+#include<stdio.h>
+#define MAX 100
+int string(int ,char [][MAX]);
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        char str[num][MAX];
+        printf("enter the string");
+        for(int i=0;i<num;i++)
+        {
+                scanf("%s",str[i]);
+        }
+        string(num,str);
+        for( int i=0;i<num;i++)
+        {
+                printf("%s\n",str[i]);
+        }
+}
+int string(int num,char str[][MAX])
+{
+        for( int i=0;i<num-1;i++)
+        {
+                for( int j=0;j<num-i-1;j++)
+                {
+                        if(strcmp(str[j],str[j+1])>0)
+                        {
+                                char temp[100];
+                                strcpy(temp,str[j]);
+                                strcpy(str[j],str[j+1]);
+                                strcpy(str[j+1],temp);
+                        }
+                }
+        }
+        for( int i=0;i<num;i++)
+        {
+                printf("%s\n",str[i]);
+        }
+}
+```
