@@ -318,3 +318,34 @@ int string(int num,char str[][MAX])
         }
 }
 ```
+## 11.program to print a string word every character in an ascending order
+```c
+#include<string.h>
+#include<stdio.h>
+void sort(char str[]);
+int main()
+{
+        char str[100];
+        printf("enter the string");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        sort(str);
+}
+void sort(char str[])
+{
+        int len=strlen(str);
+        for( int i=0;i<len-1;i++)
+        {
+                for(int j=0;j<len-i-1;j++)
+                {
+                        if(str[j]>str[j+1])
+                        {
+                        int temp=str[j];
+                        str[j]=str[j+1];
+                        str[j+1]=temp;
+                        }
+                }
+        }
+        printf("%s\n",str);
+}
+```
