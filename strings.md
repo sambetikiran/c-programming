@@ -348,4 +348,42 @@ void sort(char str[])
         }
         printf("%s\n",str);
 }
+
+```
+## 12.Write a C program that reads two strings of equal length and modifies the first string so that each character is changed step-by-step (in ASCII order) until it matches the corresponding character in the second string. Finally, print the modified first string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[100];
+        printf("enter string:");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        char str1[100];
+        printf("enter string:");
+        fgets(str1,sizeof(str1),stdin);
+        str1[strcspn(str1,"\n")]='\0';
+        int j=0;
+        for( int i=0;str[i]!='\0'&&str[j]!='\0';i++)
+        {
+                while(1)
+                {
+                        if(str[i]<str1[j])
+                        {
+                                str[i]=str[i]+1;
+                        }
+                        else if(str[i]>str1[j])
+                        {
+                                str[i]=str[i]-1;
+                        }
+                        if(str[i]==str1[j])
+                        {
+                                break;
+                        }
+                }
+                j++;
+        }
+        printf("%s\n",str);
+}
 ```
