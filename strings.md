@@ -387,3 +387,48 @@ int main()
         printf("%s\n",str);
 }
 ```
+## 12.Question: Write a C program that takes a string as input and finds the longest and shortest words in the string. Print the lengths of the longest and shortest words and the words themselves.
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char ch[100];
+        printf("enter the string1:");
+        fgets(ch,sizeof(ch),stdin);
+        ch[strcspn(ch,"\n")]='\0';
+        int count=0,k=0;
+        char word[100];
+        int min=1000,max=0;
+        char max_word[100],min_word[100];
+        for( int i=0;ch[i];i++)
+        {
+                if(ch[i]!=' '&& ch[i]!='\0')
+                {
+                        word[k++]=ch[i];
+                        count++;
+                }
+                if(ch[i]==' '||ch[i]=='\0')
+                {
+                        word[k]='\0';
+                        if(max<count)
+                        {
+                                max=count;
+                                strcpy(max_word,word);
+                        }
+                        if(count<min)
+                        {
+                                min=count;
+                                strcpy(min_word,word);
+                        }
+                k=0;
+                count=0;
+                }
+        }
+        printf("%d\n",max);
+        printf("%d\n",min);
+        printf("%s\n",max_word);
+        printf("%s\n",min_word);
+}
+``` 
+```
