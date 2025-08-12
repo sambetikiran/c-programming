@@ -559,4 +559,92 @@ int main()
         display();
 
 }
+## 7.Write a C program to sort a singly linked list in ascending order and remove duplicate nodes.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+        int data;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void create(int d)
+{
+        struct node *ptrav,*pnew;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL)
+        {
+                printf("malloc error");
+                return;
+        }
+        pnew->data=d;
+        pnew->nxt=NULL;
+        if( phead==NULL)
+        {
+                phead=pnew;
+        }
+        else
+        {
+                ptrav=phead;
+                while(ptrav->nxt!=NULL)
+                {
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void sort()
+{
+        if (phead == NULL)
+        {
+                return;
+        }
+        struct node *ptrav,*i,*prev=NULL,*j,*ptemp;
+        ptrav=phead;
+        for(i=ptrav;i!=NULL;i=i->nxt)
+        {
+                prev=ptrav;
+                for( j=i->nxt;j!=NULL;j=j->nxt)
+                {
+                        if( i->data>j->data)
+                        {
+                                int temp=i->data;
+                                i->data=j->data;
+                                j->data=temp;
+                        }
+                        else if(i->data==j->data)
+                        {
+                                prev->nxt=i->nxt;
+                        }
+                }
+        }
+}
+void display()
+{
+        struct node *ptrav;
+        ptrav=phead;
+        while(ptrav!=NULL)
+        {
+                printf("%d->",ptrav->data);
+                ptrav=ptrav->nxt;
+        }
+}
+int main()
+{
+
+        int node,d;
+        printf("enter the nodes");
+        scanf("%d",&node);
+        for(int i=0;i<node;i++)
+        {
+                scanf("%d",&d);
+                create(d);
+        }
+        display();
+        sort();
+        display();
+}
+```
+
 ```
