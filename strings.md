@@ -408,7 +408,7 @@ int main()
                         word[k++]=ch[i];
                         count++;
                 }
-                if(ch[i]==' '||ch[i]=='\0')
+                else
                 {
                         word[k]='\0';
                         if(max<count)
