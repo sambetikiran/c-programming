@@ -559,6 +559,7 @@ int main()
         display();
 
 }
+```
 ## 7.Write a C program to sort a singly linked list in ascending order and remove duplicate nodes.
 ```c
 #include<stdio.h>
