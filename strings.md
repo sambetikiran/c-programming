@@ -387,7 +387,7 @@ int main()
         printf("%s\n",str);
 }
 ```
-## 12.Question: Write a C program that takes a string as input and finds the longest and shortest words in the string. Print the lengths of the longest and shortest words and the words themselves.
+## 13.Question: Write a C program that takes a string as input and finds the longest and shortest words in the string. Print the lengths of the longest and shortest words and the words themselves.
 ```c
 #include<stdio.h>
 #include<string.h>
