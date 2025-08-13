@@ -475,3 +475,22 @@ int main()
         printf("%s\n",str);
 }
 ```
+## 16.program to remove white spaces in a string
+```c
+#include<string.h>
+#include<stdio.h>
+#include<ctype.h>
+int main()
+{
+        char str[100]=" hello world";
+        int i=0;
+        while(!isalpha(str[i])&&!isdigit(str[i]))
+        {
+                for(int j=0;str[j]!='\0';j++)
+                {
+                        str[j]=str[j+1];
+                }
+        }
+        printf("%s\n",str);
+}
+```
