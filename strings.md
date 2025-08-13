@@ -431,4 +431,47 @@ int main()
         printf("%s\n",min_word);
 }
 ``` 
+## 14. program to write a repeated character in a string
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[100];
+        printf("enter");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int count[256]={0};
+        for( int i=0;str[i]!='\0';i++)
+        {
+                count[(unsigned char)(str[i])]++;
+        }
+        for( int i=0;i<256;i++)
+        {
+                if(count[i]>1)
+                {
+                        printf("%c : %d \n",i,count[i]);
+                }
+        }
+}
+```
+## 15.program to convert vowels into uppercase letters in a string
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[100];
+        printf("enter");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        for( int i=0;str[i];i++)
+        {
+                if(str[i]=='a'||str[i]=='e'||str[i]=='i'||str[i]=='o'||str[i]=='u')
+                {
+                        str[i]=str[i]-32;
+                }
+        }
+        printf("%s\n",str);
+}
 ```
