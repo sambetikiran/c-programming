@@ -494,3 +494,55 @@ int main()
         printf("%s\n",str);
 }
 ```
+## 17.. Input a string and change it so that the characters are placed in alphabetical order. For example the string "Devanshi"should be changed to "aDehinsv".
+```c
+#include<stdio.h>
+#include<string.h>
+#define MAX 100
+int main()
+{
+        char str[100]="Devanshi";
+        int len=(strlen(str));
+        char ch,sam;
+        int found,flag;
+        for( int i=0;i<len-1;i++)
+        {
+                for( int j=0;j<len-i-1;j++)
+                {
+                        found=0;
+                        flag=0;
+                        if(str[j]>='A' &&str[j]<='Z')
+                        {
+                                ch=str[j];
+                                str[j]=str[j]+32;
+                                found=1;
+                        }
+                        sam=str[j+1];
+                        if(str[j+1]>='A' &&str[j+1]<='Z')
+                        {
+                                sam=str[j+1]+32;
+
+                        }
+                        if(str[j]>sam)
+                        {
+                                char temp=str[j];
+                                str[j]=str[j+1];
+                                str[j+1]=temp;
+                                flag=1;
+                        }
+                        if(found)
+                        {
+                                if(flag)
+                                {
+                                        str[j+1]=ch;
+                                }
+                                else
+                                {
+                                        str[j]=ch;
+                                }
+                        }
+                }
+        }
+        printf("%s",str);
+}
+```
