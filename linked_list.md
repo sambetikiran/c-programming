@@ -647,7 +647,74 @@ int main()
         display();
 }
 ```
-## 8.program to detected loop in a linked list 
+## 8.program to create loop in a linked list
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+        int data;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void create(int d)
+{
+        struct node *ptrav,*pnew;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL)
+        {
+                printf("malloc error");
+        }
+        pnew->data=d;
+        pnew->nxt=NULL;
+        if(phead==NULL)
+        {
+                phead=pnew;
+        }
+        else
+        {
+                ptrav=phead;
+                while(ptrav->nxt!=NULL)
+                {
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void display()
+{
+        struct node *ptrav;
+        ptrav=phead;
+        while(ptrav!=NULL)
+        {
+                printf("%d->",ptrav->data);
+                ptrav=ptrav->nxt;
+        }
+}
+void loop_crte(struct node  *ptemp)
+{
+        struct node *ptrav;
+        ptrav=phead;
+        while(ptrav->nxt!=NULL)
+        {
+                ptrav=ptrav->nxt;
+        }
+        ptrav->nxt=ptemp;
+}
+int main()
+{
+        int d,node;
+        printf("enter the node ");
+        scanf("%d",&node);
+        for( int i=0;i<node;i++)
+        {
+                scanf("%d",&d);
+                create(d);
+        }
+        display();
+}
+```
+## 9.program to detected loop in a linked list 
 ```c
 #include<stdio.h>
 #include<stdlib.h>
