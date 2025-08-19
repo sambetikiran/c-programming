@@ -16,3 +16,16 @@ int main()
         }
 }
 ```
+## 2.program to write an absolute number.
+```c
+#include<stdio.h>
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        int abs=(num^(num>>31))-(num>>31);
+        printf("%d",abs);
+}
+
+```
