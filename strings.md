@@ -643,4 +643,96 @@ void pal(char str[])
         }
 }
 ```
-
+## 21 .program to count maximum characters in string
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        printf("enter the string");
+        char str[100];
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int count=0;
+        for(int i=0;str[i];i++)
+        {
+                count++;
+        }
+        printf("%d",count);
+}
+```
+## 22.write program to count the length of the string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[100];
+        printf("enter the string");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int count=0;
+        for(int i=0;str[i]!='\0';i++)
+        {
+                count++;
+        }
+        printf("%d",count);
+}
+```
+## 23. program to trim leading white spaces in a string
+```c
+#include<string.h>
+#include<stdio.h>
+#include<ctype.h>
+int main()
+{
+        char str[100]=" hello world";
+        int i=0;
+        while(!isalpha(str[i])&&!isdigit(str[i]))
+        {
+                for(int j=0;str[j]!='\0';j++)
+                {
+                        str[j]=str[j+1];
+                }
+        }
+        printf("%s\n",str);
+}
+```
+## 24 .program to remove  vowels in a string.
+```c
+ #include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[100];
+        printf("enter the string");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        for(int i=0;str[i];i++)
+        {
+                if(str[i]>='A'&&str[i]<='Z')
+                {
+                        str[i]=str[i]+32;
+                }
+                if(str[i]=='a'||str[i]=='e'||str[i]=='i'||str[i]=='o'||str[i]=='u')
+                {
+                        str[i]=str[i]+1;
+                }
+        }
+        printf("%s\n",str);
+}
+```
+## 25.program to reverse the word using speacial function
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char word[100],reverse[100];
+        printf("enter the value");
+        fgets(word,sizeof(word),stdin);
+        word[strcspn(word,"\n")]='\0';
+        reverse=strrev(word);
+        printf("%s\n",reverse);
+}
+```
