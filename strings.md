@@ -832,3 +832,67 @@ int main()
         return 0;
 }
 ```
+## 29.program to convert upper and lower case
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char sent[100];
+        printf("enter the sentence:");
+        fgets(sent,sizeof(sent),stdin);
+        int len=strlen(sent);
+        for(int i=0;i<=len;i++)
+        {
+                if(sent[i]>='a'&& sent[i]<='z')
+                {
+                        sent[i]=sent[i]-32;
+                }
+        }
+        printf("%s",sent);
+        for(int i=0;i<=len;i++)
+        {
+                if(sent[i]>='A'&& sent[i]<='Z')
+                {
+                        sent[i]=sent[i]+32;
+                }
+        }
+        printf("%s",sent);
+
+
+}
+```
+## 30 program to compare two strings either same or not
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str1[100];
+        printf("ente the first string");
+        fgets(str1,sizeof(str1),stdin);
+        str1[strlen(str1)-1]='\0';
+        char str2[100];
+        printf("enter the second string");
+        fgets(str2,sizeof(str2),stdin);
+        str2[strlen(str1)-1]='\0';
+        int flag=0;
+        for(int i=0;str1[i]!='\0'||str2[i]!='\0';i++)
+        {
+                if(str1[i]!=str2[i])
+                {
+                        flag=1;
+                        break;
+                }
+        }
+                if(flag==1)
+                {
+                        printf("the are not same");
+                }
+                else
+                {
+                        printf("those are same");
+                }
+}
+```
+
