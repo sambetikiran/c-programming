@@ -955,3 +955,36 @@ int main()
     return 0;
 }
 ```
+## 33 program to print reorder the given sentence 
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[100];
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int len=strlen(str);
+        int end=len,start;
+        for(int i=len-1;i>=0;i--)
+        {
+                if(str[i]==' '||i==0)
+                {
+                        if(i==0)
+                        {
+                                start=0;
+                        }
+                        else if(str[i]==' ')
+                        {
+                                start=i+1;
+                        }
+                        for(int j=start;j<end;j++)
+                        {
+                                printf("%c",str[j]);
+                        }
+                        printf(" ");
+                        end=i;
+                }
+        }
+}
+```
