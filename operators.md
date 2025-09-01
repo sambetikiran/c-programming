@@ -126,3 +126,30 @@ int main()
         printf("%f",max);
 }
 ```
+## 8. print the given number is set or not
+```c
+#include<stdio.h>
+int main()
+{
+        int num,i;
+        printf("enter the number:");
+        scanf("%d %d",&num,&i);
+        if(num&(1<<i))
+                printf("%d number is set",num);
+        else
+                printf("%d number is not set",num);
+}
+```
+## 9.given char is alphabet or not
+```c
+#include<stdio.h>
+void main(){
+        char ch;
+        printf("enter the ch value");
+        scanf("%c",&ch);
+        if(ch>='A'&&ch<='Z')
+                printf("the given alphabet is  between AtoZ");
+        else
+                printf("the given alphabet is  not between AtoZ");
+}
+```
