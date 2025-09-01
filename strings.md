@@ -918,3 +918,40 @@ int main()
         }
 }
 ```
+## 32 .Write a function to extract a substring from a string. Assume that the substring starts at the i character(start counting from 0 character) and is n characters long.
+```c
+#include <stdio.h>
+#include <string.h>
+
+void substring(char source[], char target[], int start, int n)
+{
+    int i;
+    for(i = 0; i < n && source[start + i] != '\0'; i++)
+    {
+        target[i] = source[start + i];
+    }
+    target[i] = '\0';
+}
+
+int main()
+{
+    char str[100], sub[100];
+    int pos, len;
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+    str[strcspn(str, "\n")] = '\0';
+
+    printf("Enter starting position: ");
+    scanf("%d", &pos);
+
+    printf("Enter length of substring: ");
+    scanf("%d", &len);
+
+    substring(str, sub, pos, len);
+
+    printf("Extracted substring: %s\n", sub);
+
+    return 0;
+}
+```
