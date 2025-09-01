@@ -153,3 +153,62 @@ void main(){
                 printf("the given alphabet is  not between AtoZ");
 }
 ```
+## 10.Write a C program to print numbers from 0 to 80, displaying 8 numbers per line
+```c
+#include<stdio.h>
+int main()
+{
+        int  n=80;
+        for(int i=0;i<=n;i++)
+        {
+                if(i%8==0)
+                {
+                        printf("\n");
+                }
+                printf("%d\t",i);
+        }
+        return 0;
+}
+```
+## 11.Write a C program to print a pyramid of stars with a given number of rows
+```c
+#include<stdio.h>
+int main()
+{
+        int num;
+        printf("enter the number:");
+        scanf("%d",&num);
+        for(int i=1;i<num;i++)
+        {
+                for(int k=1;k<=num-i;k++)
+                {
+                        printf(" ");
+                }
+                for(int j=1;j<=(2*i-1);j++)
+                {
+                                printf(" * ");
+                }
+                printf("\n");
+        }
+
+}
+```
+## 12.write c progran to print number pattern
+```c
+#include<stdio.h>
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        for(int i=1;i<=num;i++)
+        {
+                for(int j=1;j<=i;j++)
+                {
+                        printf("%d\t",j);
+                }
+                printf("\n");
+        }
+        return 0;
+}
+```
