@@ -88,7 +88,7 @@ int main()
         return 0;
 }
 ```
-## Find the maximum average of all contiguous subarrays of size 4 in a given array.
+## 7.Find the maximum average of all contiguous subarrays of size 4 in a given array.
 ```c
 #include<stdio.h>
 int main()
