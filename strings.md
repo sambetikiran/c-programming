@@ -736,3 +736,99 @@ int main()
         printf("%s\n",reverse);
 }
 ```
+## 26 program to use special charaters like strncat,strcpy.
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[100];
+        printf("enter the string");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        char str1[100];
+        printf("enter the string");
+        fgets(str1,sizeof(str1),stdin);
+        str1[strcspn(str1,"\n")]='\0';
+        strncat(str,str1,);
+        //strcpy(str1,str);
+        printf("%s\n",str);
+}
+```
+## 27 .Write a C program to check whether any word in a given string contains the character 'a' or the substring "ram".
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[100];
+        printf("enter the number");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        char *tok=strtok(str," ");
+        int flag=0,found=0;
+        while(tok!=NULL)
+        {
+                if(strchr(tok,'a')!=0)
+                {
+                        flag=1;
+                }
+                if(strstr(tok,"ram")!=0)
+                {
+                        found=1;
+                 }
+                tok=strtok(NULL," ");
+        }
+        if(flag==1)
+        {
+                printf("a is found");
+        }
+        if(found==1)
+        {
+                printf("ram is found");
+        }
+}
+```
+## 28 .Write a C program to reverse each word of a given string without changing the order of words.
+```c
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+void reverse_word(char *sptr)
+{
+        int start=0, end=0;
+        while(sptr[end]!='\0')
+        {
+                while(sptr[end]!=' '&&sptr[end]!='\0')
+                {
+                        end++;
+                }
+                int i=start, j=end-1;
+                while(i<j)
+                {
+                        char temp=sptr[i];
+                        sptr[i]=sptr[j];
+                        sptr[j]=temp;
+                        i++;
+                        j--;
+                }
+                start=end+1;
+                end=start;
+        }
+        return;
+}
+
+int main()
+{
+        char *sptr;
+        sptr=(char *)malloc(sizeof(char)*100);
+        printf("Enter the string\n");
+        fgets(sptr,100,stdin);
+        sptr[strlen(sptr)-1]='\0';
+        printf("Entered string before reversing each word:\n%s\n",sptr);
+        reverse_word(sptr);
+        printf("Entered string after reversing each word:\n%s\n",sptr);
+        return 0;
+}
+```
