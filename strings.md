@@ -590,3 +590,57 @@ int main()
         }
 }
 ```
+## 20 write a cprogram to to print given string is palindorme or not?
+```c
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+void pal(char[]);
+int main()
+{
+        char str[100];
+        printf("enter the string");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        pal(str);
+}
+void pal(char str[])
+{
+        char alp[100];
+        int k=0,flag;
+        for( int i=0;str[i]!='\0';i++)
+        {
+                if(isalpha(str[i]))
+                {
+                str[i]=tolower(str[i]);
+                //str[i]=ch;
+                }
+                if(str[i]>='a' &&str[i]<='z' ||str[i]>='A'&&str[i]<='Z')         //allowing only alphabets
+                {
+                        alp[k++]=str[i];                                           //alphabet character assgining to alp
+                }
+        }
+        alp[k]='\0';
+        printf("%s\n",alp);
+        int l=0,j=strlen(alp)-1;                                             //finding length of the string
+        while(j>0)
+        {
+                if(alp[l]!=alp[j])
+                {
+                        flag=1;
+                }
+                if(flag==1)
+                {
+                        printf("it is not a palindrome\n");
+                        break;
+                }
+                l++;
+                j--;
+        }
+                if(flag==0)
+                {
+                printf("it is a palindrome");
+        }
+}
+```
+
