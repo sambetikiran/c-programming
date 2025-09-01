@@ -895,4 +895,26 @@ int main()
                 }
 }
 ```
-
+##  31. Write a program to abbreviate input text. For example if the input is "World Health Organization'', then the output should be WHO 
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[100];
+        printf("enter the string");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        if(str[0]!=' ')
+        {
+                printf("%c",str[0]);
+        }
+        for(int i=0;str[i]!='\0';i++)
+        {
+                if(str[i]==' ')
+                {
+                        printf("%c",str[i+1]);
+                }
+        }
+}
+```
