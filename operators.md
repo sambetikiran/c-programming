@@ -212,3 +212,43 @@ int main()
         return 0;
 }
 ```
+## 13.Write a C program to find and display all Pythagorean triplets (x, y, z) where x² + y² = z² and x, y, z < 50.
+```c
+include<stdio.h>
+int main()
+{
+        int x,y,z;
+        for(x=1;x<50;x++)
+        {
+                for(y=x+1;y<50;y++)
+                {
+                        for(z=y+1;z<50;z++)
+                        {
+                                if(x*x+y*y==z*z)
+                                {
+                                        printf("%d**+%d**=%d**\n",x,y,z);
+                                }
+                        }
+                }
+        }
+}
+```
+## 14 fibnacci series
+```c
+#include<stdio.h>
+int main()
+{
+        int n,next,first=0,sec=1;
+        printf("enter the value");
+        scanf("%d",&n);
+        for(int i=0;i<=n;i++)
+        {
+                next=first+sec;
+                first=sec;
+                sec=next;
+                printf("%d\t",next);
+        }
+        printf("\n");
+}
+```
+
