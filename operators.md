@@ -88,3 +88,41 @@ int main()
         return 0;
 }
 ```
+## Find the maximum average of all contiguous subarrays of size 4 in a given array.
+```c
+#include<stdio.h>
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        int arr[num];
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        float k=4;
+        float max=0;
+        float avg;
+        for(int i=0;i<=num-k;i++)
+        {
+                int sum=0;
+                int count=0;
+                for(int j=i;j<i+k;j++)
+                {
+                        sum=sum+arr[j];
+                        count++;
+                }
+                if(count==k)
+                {
+                        printf("sum=%d\n",sum);
+                        avg=sum/k;
+                }
+                if(avg>max)
+                {
+                        max=avg;
+                }
+        }
+        printf("%f",max);
+}
+```
