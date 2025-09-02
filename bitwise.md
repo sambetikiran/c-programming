@@ -59,3 +59,28 @@ int main()
         printf("left=%d",left);
 }
 ```
+## 5 find missing number
+```c
+#include<stdio.h>
+int main()
+{
+        int arr[6];
+        int n=6;
+        printf("enter the array value");
+        for( int i=0;i<n-1;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        int all=0,part=0;
+        for( int i=1;i<=n;i++)
+        {
+                all^=i;
+        }
+        for(int j=0;j<n-1;j++)
+        {
+                part^=arr[j];
+        }
+        int missing=all^part;
+        printf("%d\n",missing);
+}
+```
