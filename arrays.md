@@ -747,3 +747,40 @@ int main()
         }
 }
 ```
+## 20. program to print sum of diagonals
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        int arr[num][num];
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        int sum=0,add=0;
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        if(i==j)
+                        {
+                                sum=sum+arr[i][j];
+                        }
+                        int k=i+j;
+                        if(k==(num-1))
+                        {
+                                add=add+arr[i][j];
+                        }
+                }
+        }
+        printf("%d",sum);
+        printf("%d",add);
+}
+```
