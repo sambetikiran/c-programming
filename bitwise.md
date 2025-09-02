@@ -84,3 +84,23 @@ int main()
         printf("%d\n",missing);
 }
 ```
+## Count the number of set bits (1s) in a number.
+```c
+#include<stdio.h>
+int main()
+{
+        int a;
+        printf("enter the number");
+        scanf("%d",&a);
+        int count=0;
+        while(a>0)
+        {
+                if(a&1)
+                {
+                        count++;
+                }
+                a=a>>1;
+        }
+        printf("%d\n",count);
+}
+```
