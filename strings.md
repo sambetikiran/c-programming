@@ -988,3 +988,24 @@ int main()
         }
 }
 ```
+## 34. program to reverese from middle of the string.
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[100];
+        printf("enter the string");
+        fgets(str,sizeof(str),stdin);
+        str[strlen(str)-1]='\0';
+        int len=strlen(str);
+        int mid=len/2;
+        for(int i=0;i<(len-mid)/2;i++)
+        {
+                int temp= str[mid+i];
+                str[mid+i]=str[len-i-1];
+                str[len-i-1]=temp;
+        }
+        printf("%s",str);
+}
+```
