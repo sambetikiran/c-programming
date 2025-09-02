@@ -712,3 +712,38 @@ int main()
         }
 }
 ```
+## 19. program to find kth  smallest element in an array
+```c
+#include<stdio.h>
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        int k;
+        printf("enter k");
+        scanf("%d",&k);
+        int arr[num];
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        int count=0;
+        for(int i=0;i<num-1;i++)
+        {
+                for(int j=0;j<num-1-i;j++)
+                {
+                        if(arr[j]>arr[j+1])
+                        {
+                                int temp=arr[j];
+                                arr[j]=arr[j+1];
+                                arr[j+1]=temp;
+                        }
+                }
+        }
+        if(k>=0&&k<=9)
+        {
+                printf("%dth is the smallest element is %d",k,arr[k-1]);
+        }
+}
+```
