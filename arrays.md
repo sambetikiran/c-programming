@@ -784,3 +784,24 @@ int main()
         printf("%d",add);
 }
 ```
+## 21. program to print sub arrays in a given array
+```c
+#include<stdio.h>
+int main()
+{
+        int num=4;
+        int arr[4]={1,2,3,4};
+        for(int i=0;i<num;i++)
+        {
+
+                for(int k=i;k<num;k++)
+                {
+                        for(int j=i;j<=k;j++)
+                        {
+                                printf("%d\t",arr[j]);
+                        }
+                printf("\n");
+                }
+        }
+}
+```
