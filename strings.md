@@ -955,7 +955,7 @@ int main()
     return 0;
 }
 ```
-## 33 program to print reorder the given sentence 
+## 35 program to print reorder the given sentence 
 ```c
 #include<stdio.h>
 #include<string.h>
@@ -988,7 +988,7 @@ int main()
         }
 }
 ```
-## 34. program to reverese from middle of the string.
+## 36. program to reverese from middle of the string.
 ```c
 #include<stdio.h>
 #include<string.h>
@@ -1007,5 +1007,30 @@ int main()
                 str[len-i-1]=temp;
         }
         printf("%s",str);
+}
+```
+## 37. program to count the number of words in a string
+```c
+include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[100];
+        int count=0;
+        printf("enter the string");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        for(int i=0;;i++)
+        {
+                if(str[i]==' '||str[i]=='\0')
+                {
+                        count++;
+                }
+                if(str[i]=='\0')
+                {
+                        break;
+                }
+        }
+        printf("%d",count);
 }
 ```
