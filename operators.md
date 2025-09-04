@@ -251,4 +251,34 @@ int main()
         printf("\n");
 }
 ```
+## 15. hardcoded program for number in binary form find it is palindrome or not
+```c
+#include<stdio.h>
+int main()
+{
+        int num=21;
+        int arg[100];
+        int a=0,k=0;
+        for(int i=4;i>=0;i--)
+        {
+                arg[k++]=((num>>i)&1);
+        }
+        printf("\n");
+
+        int flag=0;
+        for(int i=0;i<k/2;i++)
+        {
+                if(arg[i]!=arg[k-i-1])
+                {
+                        printf("it is not palindrome\n");
+                        flag=1;
+                        break;
+                }
+        }
+        if(flag==0)
+        {
+                printf("it is palindrome\n");
+        }
+}
+```
 
