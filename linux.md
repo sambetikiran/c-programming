@@ -112,7 +112,7 @@ With this exec families will used to replace the new process image with new prog
 and in child process if we perform exec() function it will execute from the new process.
 ```
 ## 6.Write a C program to illustrate the use of the execvp() function.
-```
+```c
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
