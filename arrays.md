@@ -805,3 +805,60 @@ int main()
         }
 }
 ```
+## program to write union of two matrix in 2d array
+```c
+#include<stdio.h>
+#define MAX 100
+void uni(int,int[][MAX],int [][MAX]);
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        int first[num][MAX];
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        scanf("%d",&first[i][j]);
+                }
+        }
+        int sec[num][MAX];
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        scanf("%d",&sec[i][j]);
+                }
+        }
+        uni(num,first,sec);
+}
+void uni(int num,int first[][MAX],int sec[][MAX])
+{
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        if(first[i][j]==sec[i][j])
+                        {
+                                sec[i][j]=0;
+                        }
+                }
+        }
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        first[num+i][j]=sec[i][j];
+                }
+        }
+        for(int i=0;i<2*num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        printf("%d\t",first[i][j]);
+                }
+                printf("\n");
+        }
+}
+```
