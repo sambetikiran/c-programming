@@ -77,7 +77,7 @@ exec():
 By using exec()  will useful to replace the process image with new program or new memory.
 ```
 ## 3.Write a C program to demonstrate the use of fork() system call. 
-```
+```c
 #include<stdio.h>
 #include<unistd.h>
 #include<stdlib.h>
