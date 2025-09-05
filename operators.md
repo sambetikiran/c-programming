@@ -281,4 +281,36 @@ int main()
         }
 }
 ```
+## 17.program to write given number is palindrome or not in inary form
+```c
+#include<stdio.h>
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        int arr[10];
+        int k=0;
+        while(num>0)
+        {
+                arr[k++]=num%2;
+                num=num/2;
+        }
+        int flag=0;
+        for(int i=0,j=k-1;i<j;i++,j--)
+        {
+                if(arr[i]!=arr[j])
+                {
+                        flag=1;
+                        printf("it is not palindrome\n");
+                        break;
+                }
+
+        }
+        if(flag==0)
+        {
+                printf("it is palindrome\n");
+        }
+}
+```
 
