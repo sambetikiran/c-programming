@@ -136,3 +136,25 @@ int main()
         wait(&status);
 }
 ```
+## 7.How does the vfork() system call differ from fork()? 
+```
+fork() is a system call which will copy parent process to child process with separate memory space or physical frame in memory.
+vfork() is a system call  which will share the parent memory space or physical frame in memory with child until exec() or exit ()call happen.
+```
+## 8.Write a program in C to create a child process using fork() and print its PID. 
+```c
+#include<stdio.h>
+#include<unistd.h>
+int main()
+{
+        int id=fork();
+        if(id==0)
+        {
+                printf("child process=%d\n",getpid());
+        }
+        else
+        {
+                printf("parent process=%d\n",getpid());
+        }
+}
+```
