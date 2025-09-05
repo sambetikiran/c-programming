@@ -63,5 +63,8 @@ int main()
         printf("%d",WEXITSTATUS(stat));
 }*/
 ```
+## 1.Explain the concept of process creation in operating systems.
+```
+A.process creation is while execution process will be created.In process we can create multiple process based on our requirments.Each process will have separate pid and the relation beteween those process will be parent child relation.
 
 
