@@ -217,3 +217,28 @@ example: my file name is a.out and exec has ls -l command
 if i call exec in the program it will replace the ls -l memory space with a.out
 and it will perform the ls -l it will not perform the a.out.
 ```
+## 16. Explain the concept of process scheduling in operating systems. 
+```
+process sheduling are there in kernal space in operating system.
+it will work with process control management(PCB) it will control the pcb which pcb wanted to perform first.
+```
+## 17. Write a program in C to create a zombie process and explain how to avoid it.
+```c#include<stdio.h>
+#include<unistd.h>
+#include<stdlib.h>
+int main()
+{
+        int stats;
+        int pid=fork();
+        if(pid==0)
+        {
+                printf("child process=%d",getpid());
+                exit(5);
+        }
+        printf("parent process=%d",getpid());
+        sleep(10);
+}
+To avoid zombie process we have to check the program whether the parent is collecting the exit status of child process or not using wait blocking call
+```
+
+
