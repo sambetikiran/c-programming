@@ -141,7 +141,13 @@ int main()
 fork() is a system call which will copy parent process to child process with separate memory space or physical frame in memory.
 vfork() is a system call  which will share the parent memory space or physical frame in memory with child until exec() or exit ()call happen.
 ```
-## 8.Write a program in C to create a child process using fork() and print its PID. 
+## 8.Discuss the significance of the getpid() and getppid() system calls.
+```
+getpid() is used to return the child process pid
+getppid() is used to return the child's parent process pid .
+```
+## 9
+## 10.Write a program in C to create a child process using fork() and print its PID. 
 ```c
 #include<stdio.h>
 #include<unistd.h>
@@ -157,4 +163,57 @@ int main()
                 printf("parent process=%d\n",getpid());
         }
 }
+```
+## 11.Describe the process hierarchy in UNIX-like operating systems. 
+```
+process will set in execution.
+Every first process called parent process will have ppid is init_->1.
+In these we can have multiple process parent and child process we can create 1 or more child process.
+Orphan process is the process that its parent  process will executed before child process and its ppid will be init_ called orphan process.
+zombie process is the process that child process will executed and parent process will not collect the status from child using wait() system call
+call zombie process.
+```
+## 12.Describe the process hierarchy in UNIX-like operating systems.
+```
+the purpose of exit() system call is to terminate the particular child process and
+send its status to the parent process.
+```
+## 13.Discuss the role of the fork() system call in implementing multitasking.
+```
+fork() system call used to create new process of duplicate of its parent process
+we can create mutliple child process and we can do mutliple tasks assign to the particular child process
+```
+## 14. Write a C program to create multiple child processes using fork() and display their PIDs.
+```c
+#include<stdio.h>
+#include<unistd.h>
+#include<sys/wait.h>
+#include<stdlib.h>
+int main()
+{
+        int status;
+        int pid1=fork();
+        if(pid1==0)
+        {
+                printf("%d child process pid\n",getpid());
+                exit(0);
+        }
+        int pid2=fork();
+        if(pid2==0)
+        {
+                printf("%d child process pid\n",getpid());
+                exit(0);
+        }
+        waitpid(pid1,&status,0);
+        waitpid(pid2,&status,0);
+}
+```
+## 15.How does the exec() system call replace the current process image with a new one?
+```
+exec() system call will replace the current process with new program.
+if we do in child process that current process imaage run untitl it meets exec call
+when exec call meets it will perform command line arguments of perticular location it will moved
+example: my file name is a.out and exec has ls -l command
+if i call exec in the program it will replace the ls -l memory space with a.out
+and it will perform the ls -l it will not perform the a.out.
 ```
