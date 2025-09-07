@@ -1087,4 +1087,79 @@ int main()
         printf("\n");
 }
 ```
+## 39.Write a C program to find the longest substring without repeating characters in a given string
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[] = "helloword";
+    int len = strlen(str);
+
+    char max_sub[100];
+    int max_len = 0;
+
+    for(int i=0;i<len;i++) {
+        char temp[100];
+        int k=0;
+        for(int j=i;j<len;j++) {
+            int found=0;
+            for(int m=0;m<k;m++) {
+                if(temp[m]==str[j]) {
+                    found=1;
+                    break;
+                }
+            }
+            if(found) break;
+            temp[k++] = str[j];
+        }
+        temp[k]='\0';
+        if(k>max_len) {
+            max_len=k;
+            strcpy(max_sub,temp);
+        }
+    }
+
+    printf("Longest substring without repeating characters: %s\n", max_sub);
+}
+```
+## 40. program to reverse every word in a string
+```c
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+void reverse_word(char *sptr)
+{
+        int start=0, end=0;
+        while(sptr[end]!='\0')
+        {
+                while(sptr[end]!=' ' && sptr[end]!='\0')
+                {
+                        end++;
+                }
+                for(int i=start;i<end;i++)
+                {
+                        char temp=sptr[i];
+                        sptr[i]=sptr[end-i-1];
+                        sptr[end-i-1]=temp;
+                }
+                start=end+1;
+                end=start;
+        }
+        return;
+}
+
+int main()
+{
+        char *sptr;
+        sptr=(char *)malloc(sizeof(sptr)*100);
+        printf("Enter the string\n");
+        fgets(sptr,100,stdin);
+        sptr[strlen(sptr)-1]='\0';
+        printf("Entered string before reversing each word: \n %s\n",sptr);
+        reverse_word(sptr);
+        printf("Entered string after reversing each word: \n %s\n",sptr);
+        return 0;
+}
 ```
