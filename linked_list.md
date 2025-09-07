@@ -802,3 +802,79 @@ int main()
 }
 '''
 ```
+## 11.program to split the linked list into two equal parts.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+        int data;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+struct node *phead2=NULL;
+void create(int d)
+{
+        struct node *ptrav,*pnew;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL)
+        {
+                printf("malloc error");
+                return;
+        }
+        pnew->data=d;
+        pnew->nxt=NULL;
+        if(phead==NULL)
+        {
+                phead=pnew;
+        }
+        else
+        {
+                ptrav=phead;
+                while(ptrav->nxt!=NULL)
+                {
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void split()
+{
+        struct node *ptrav,*slow=phead,*fast=phead,*prev=NULL;
+        ptrav=phead;
+        while(fast!=NULL&&fast->nxt!=NULL)
+        {
+                prev=slow;
+                slow=slow->nxt;
+                fast=fast->nxt->nxt;
+        }
+        phead2=slow;
+        prev->nxt=NULL;
+}
+void display(struct node *head)
+{
+        struct node *ptrav=head;
+        while(ptrav!=NULL)
+        {
+                printf("%d->",ptrav->data);
+                ptrav=ptrav->nxt;
+        }
+        printf("\n");
+}
+int main()
+{
+        int d,node;
+        printf("enter the node");
+        scanf("%d",&node);
+        for(int i=0;i<node;i++)
+        {
+                scanf("%d",&d);
+                create(d);
+        }
+
+        display(phead);
+        split();
+        display(phead);
+        display(phead2);
+}
+```
