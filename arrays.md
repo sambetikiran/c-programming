@@ -1212,3 +1212,97 @@ void sum_max(int num,int arr[])
         printf("%d",maximum);
 }
 ```
+## 32.Write a C program to find the maximum sum of any subarray of size k using sliding window.
+```c
+#include<stdio.h>
+int main()
+{
+        int num;
+        printf("enter the number:");
+        scanf("%d",&num);
+        int k=4;
+        int arr[num];
+        printf("enter the array elements:");
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        int sum=0;
+        for(int i=0;i<k;i++)
+        {
+                sum=sum+arr[i];
+        }
+        int ws=sum;
+        int max=sum,max1;
+        for(int i=k;i<num;i++)
+        {
+                ws=ws-arr[i-k]+arr[i];
+                max1=ws;
+                if(max>max1)
+                {
+                        max1=max;
+                }
+        }
+        printf("maximum sum=%d\n",max1);
+}
+```
+## 33.Write a C program to find the second largest element in an array without using sorting
+```c
+#include<stdio.h>
+int secondlarge(int[],int);
+
+int main()
+{
+    int num;
+    printf("enter the number: ");
+    scanf("%d",&num);
+
+    int arr[num];
+    printf("enter the array elements: ");
+    for(int i=0;i<num;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+
+    int second=secondlarge(arr,num);
+    if(second == -1)
+        printf("No second largest element (all elements are same)\n");
+    else
+        printf("Second largest = %d\n",second);
+}
+
+int secondlarge(int arr[],int num)
+{
+    int first,second;
+
+    if(arr[0] > arr[1])
+    {
+        first = arr[0];
+        second = arr[1];
+    }
+    else
+    {
+        first = arr[1];
+        second = arr[0];
+    }
+
+    for(int i=2;i<num;i++)
+    {
+        if(arr[i] > first)
+        {
+            second = first;
+            first = arr[i];
+        }
+        else if(arr[i] > second && arr[i] != first)
+        {
+            second = arr[i];
+        }
+    }
+
+    // Handle case when second largest does not exist
+    if(first == second)
+        return -1;
+
+    return second;
+}
+```
