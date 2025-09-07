@@ -1105,3 +1105,110 @@ void ldiagonal(int arr[][100],int num)
         printf("%d",sum);
 }
 ```
+## 28.Write a C program to read and display an n × n matrix
+```c
+#include<stdio.h>
+#define size 100
+void array(int[][size],int);
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        int arr[size][size];
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        array(arr,num);
+}
+void array(int arr[][size],int num)
+{
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        printf("%d\t",arr[i][j]);
+                }
+                printf("\n");
+        }
+}
+```
+## 30.Write a C program using recursion to find the sum of all even elements in an array.
+```c
+#include<stdio.h>
+int recursive(int[],int);
+int main()
+{
+        int num;
+        printf("enter the element");
+        scanf("%d",&num);
+        int arr[num];
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        int rec=recursive(arr,num);
+        printf("%d",rec);
+}
+int recursive(int arr[],int num)
+{
+        if(num==0)
+        {
+                return 0;
+        }
+        if(arr[num-1]%2==0)
+        {
+                return arr[num-1]+recursive(arr,num-1);
+        }
+        else
+        {
+                return recursive(arr,num-1);
+        }
+}
+```
+## 31.Write a C program to find the maximum sum of any two elements in an array
+```c
+#include<stdio.h>
+void sum_max(int ,int[]);
+int main()
+{
+        int num;
+        printf("enter the number:");
+        scanf("%d",&num);
+        int arr[num];
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        sum_max(num,arr);
+}
+void sum_max(int num,int arr[])
+{
+        int t=(num*(num-1))/2;
+        int k=0;
+        int sum,max[t];
+        for( int i=0;i<num;i++)
+        {
+                sum=0;
+                for(int j=i+1;j<num;j++)
+                {
+                        sum=arr[i]+arr[j];
+                        max[k++]=sum;
+
+                }
+        }
+        int maximum=max[0];
+        for( int i=0;i<t;i++)
+        {
+                if(max[i]>maximum)
+                {
+                        maximum=max[i];
+                }
+        }
+        printf("%d",maximum);
+}
+```
