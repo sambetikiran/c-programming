@@ -1306,3 +1306,164 @@ int secondlarge(int arr[],int num)
     return second;
 }
 ```
+## 34.Write a C program to read an n × n matrix and compute the sum of each row and each column.
+```c
+#include<stdio.h>
+#define size 100
+void row(int[][size],int);
+void col(int[][size],int);
+int main()
+{
+        int num;
+        printf("enter");
+        scanf("%d",&num);
+        int arr[size][size];
+        printf("enter elements");
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        row(arr,num);
+        col(arr,num);
+}
+void row(int arr[][100],int num)
+{
+        int sum;
+        for(int i=0;i<num;i++)
+        {
+                sum=0;
+                for(int j=0;j<num;j++)
+                {
+                        sum=sum+arr[i][j];
+                }
+                printf("%dst row =%d\n",i,sum);
+        }
+}
+void col(int arr[][100],int num)
+{
+        int sum;
+        for(int i=0;i<num;i++)
+        {
+                sum=0;
+                for(int j=0;j<num;j++)
+                {
+                        sum=sum+arr[j][i];
+                }
+                printf("%d column =%d\n",i,sum);
+        }
+}
+```
+## 35.Write a C program to calculate the average of n numbers using a function
+```c
+#include<stdio.h>
+int avg(int[],int);
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        int arr[num];
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        int average=avg(arr,num);
+        printf("avreage=%d",average);
+}
+int avg(int arr[],int num)
+{
+        int sum=0;
+        for(int i=0;i<num;i++)
+        {
+                sum=sum+arr[i];
+        }
+        sum=sum/num;
+        return sum;
+}
+```
+## 36. program to print sum of all elements in an array
+```c
+#include<stdio.h>
+int summ(int[],int);
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        int arr[num];
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        int sum=summ(arr,num);
+        printf("%d\n",sum);
+}
+int summ(int arr[],int num)
+{
+        int sum=0;
+        for(int i=0;i<num;i++)
+        {
+                sum=sum+arr[i];
+        }
+        return sum;
+}
+```
+## 37.Write a C program to merge two arrays of size n and sort the merged array in descending order
+```c
+#include<stdio.h>
+void number(int[],int[],int num);
+int main()
+{
+        int num;
+        printf("enter the number:");
+        scanf("%d",&num);
+        int first[num];
+        int second[num];
+        printf("first");
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&first[i]);
+        }
+        printf("second");
+        for(int j=0;j<num;j++)
+        {
+                scanf("%d",&second[j]);
+        }
+        number(first,second,num);
+}
+void number(int first[],int second[],int num)
+{
+        int numm=num*2;
+        int arr[numm];
+        for(int i=0;i<num;i++)
+        {
+                arr[i]=first[i];
+        }
+        printf("\n");
+        for(int j=0;j<num;j++)
+        {
+                arr[num+j]=second[j];
+        }
+        for(int k=0;k<numm-1;k++)
+        {
+                int temp;
+                for(int l=0;l<numm-k-1;l++)
+                {
+                        if(arr[l]<arr[l+1])
+                        {
+                                temp=arr[l];
+                                arr[l]=arr[l+1];
+                                arr[l+1]=temp;
+                        }
+                }
+        }
+        printf("\n");
+        for(int l=0;l<numm;l++)
+        {
+                printf("%d\t",arr[l]);
+        }
+}
+```
