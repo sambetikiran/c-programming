@@ -878,3 +878,305 @@ int main()
         display(phead2);
 }
 ```
+## 12.Write a C program to create a loop in a singly linked list at a given position
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+        int data;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void create(int d)
+{
+        struct node *ptrav,*pnew;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL)
+        {
+                printf("malloc error");
+                return;
+        }
+        pnew->data=d;
+        pnew->nxt=NULL;
+        if(phead==NULL)
+        {
+                phead=pnew;
+                printf("the node is entered\n");
+                return;
+        }
+        int count=0,pos;
+        ptrav=phead;
+        while(ptrav->nxt!=NULL)
+        {
+                ptrav=ptrav->nxt;
+        }
+        ptrav->nxt=pnew;
+}
+void display()
+{
+        struct node *ptrav;
+        ptrav=phead;
+        if(ptrav==NULL)
+        {
+                printf("the list is empty");
+                return;
+        }
+        while(ptrav!=NULL)
+        {
+                printf("->%d",ptrav->data);
+                ptrav=ptrav->nxt;
+        }
+        printf("\n");
+}
+void loop(int temp,int count)
+{
+        struct node*ptrav,*ptemp;
+        ptrav=phead;
+        if(ptrav==NULL)
+        {
+                printf("the list is empty");
+                return;
+        }
+        else
+        {
+                ptrav=ptrav->nxt;
+//              int count=0;
+                if(count==temp)
+                {
+                        ptemp=ptrav;
+                }
+                if(ptrav==NULL)
+                {
+                        ptrav->nxt=ptemp;
+                }
+                count++;
+        }
+}
+int main()
+{
+        int node,d,count=0;
+        printf("enter the node");
+        scanf("%d",&node);
+        int temp;
+        printf("enter the position ");
+        scanf("%d",&temp);
+        for(int i=0;i<node;i++)
+        {
+                printf("enter:");
+                scanf("%d",&d);
+                create(d);
+
+        }
+        display();
+        for(int i=0;i<node;i++)
+        {
+                loop(temp,count);
+        }
+        display();
+}
+```
+## 13. program to remove last node in a linked list
+```
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+        int data;
+        struct node*nxt;
+};
+struct node *phead=NULL;
+void createnode(int d)
+{
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL)
+        {
+                printf("the malloc error");
+                return;
+        }
+        pnew->data=d;
+        pnew->nxt=NULL;
+        if(phead==NULL)
+        {
+                printf("now node is created\n");
+                phead=pnew;
+        }
+        else
+        {
+                ptrav=phead;
+                while(ptrav->nxt!=NULL)
+                {
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+                return;
+        }
+}
+void display()
+{
+        struct node *ptrav;
+        ptrav=phead;
+        if(ptrav==NULL)
+        {
+                printf("the list is empty");
+                return;
+        }
+        else
+        {
+                while(ptrav!=NULL)
+                {
+                        printf("->%d",ptrav->data);
+                        ptrav=ptrav->nxt;
+                }
+                return;
+        }
+        printf("\n");
+
+}
+//delete last node
+void deleteLnode()
+{
+        struct node *ptrav,*prev;
+        ptrav=phead;
+        prev=NULL;
+        if(ptrav==NULL)
+        {
+                printf("the list is empty");
+                return;
+        }
+        else if(ptrav->nxt==NULL)
+        {
+                free(ptrav);
+                phead=NULL;
+        }
+        else
+        {
+                while(ptrav->nxt!=NULL)
+                {
+                        prev=ptrav;
+                        ptrav=ptrav->nxt;
+                }
+                prev->nxt=NULL;
+                free(ptrav);
+                return;
+        }
+
+}
+
+int main()
+{
+        createnode(10);
+        createnode(20);
+        createnode(30);
+        createnode(40);
+        createnode(50);
+        display();
+        deleteLnode();
+        display();
+}
+```
+## 14. program to add node int middle in a linkedd list
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+        int data;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void create(int d)
+{
+        struct node *pnew,*ptrav;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL)
+        {
+                printf("malloc error");
+                return;
+        }
+        pnew->data=d;
+        pnew->nxt=NULL;
+        if(phead==NULL)
+        {
+                phead=pnew;
+                printf("node is added");
+        }
+        else
+        {
+                ptrav=phead;
+                while(ptrav->nxt!=NULL)
+                {
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void addnodemiddle(int d)
+{
+        struct node *ptrav,*pnew,*prev;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        ptrav=NULL;
+        prev=NULL;
+        if(pnew==NULL)
+        {
+                printf("malloc error");
+                return;
+        }
+        pnew->data=d;
+        pnew->nxt=NULL;
+        ptrav=phead;
+        while(d>ptrav->data)
+        {
+                prev=ptrav;
+                ptrav=ptrav->nxt;
+        }
+        prev->nxt=pnew;
+        pnew->nxt=ptrav;
+}
+void display()
+{
+        struct node *ptrav;
+        ptrav=phead;
+        if(ptrav==NULL)
+        {
+                printf("the list is empty");
+        }
+        else
+        {
+                while(ptrav!=NULL)
+                {
+                        printf("%d\t",ptrav->data);
+                        ptrav=ptrav->nxt;
+                }
+        }
+}
+
+
+
+
+
+
+
+
+
+
+
+int main()
+{
+        int num,data;
+        printf("enter the no ofnodes");
+        scanf("%d",&num);
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&data);
+                create(data);
+        }
+        display();
+        int add;
+        printf("enter the middle");
+        scanf("%d",&add);
+        addnodemiddle(add);
+        display();
+}
+```
