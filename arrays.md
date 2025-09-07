@@ -805,7 +805,7 @@ int main()
         }
 }
 ```
-## program to write union of two matrix in 2d array
+## 22.program to write union of two matrix in 2d array
 ```c
 #include<stdio.h>
 #define MAX 100
@@ -860,5 +860,248 @@ void uni(int num,int first[][MAX],int sec[][MAX])
                 }
                 printf("\n");
         }
+}
+```
+## 22.program to reverse the array
+```c
+#include<stdio.h>
+void reverse(int[],int);
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        printf("enter the elements");
+        int arr[num];
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        reverse(arr,num);
+}
+void reverse(int arr[],int num)
+{
+        for(int i=num-1;i>=0;i--)
+        {
+                printf("%d\t",arr[i]);
+        }
+}
+```
+## 23. program to square the all elements
+```c
+#include<stdio.h>
+void square(int[],int);
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        int arr[num];
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        square(arr,num);
+}
+void square(int arr[],int num)
+{
+        for(int i=0;i<num;i++)
+        {
+                arr[i]*=arr[i];
+        }
+        for(int j=0;j<num;j++)
+        {
+                printf("%d\t",arr[j]);
+        }
+        printf("\n");
+}
+```
+## 24. prorgam to  print sum of row and columns
+```c
+#include<stdio.h>
+#define size 100
+void sum(int[][100],int);
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        int arr[size][size];
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        sum(arr,num);
+}
+void sum(int arr[][100],int num)
+{
+        int sum;
+        for(int i=0;i<num;i++)
+        {
+                sum=0;
+                for(int j=0;j<num;j++)
+                {
+                        sum+=arr[i][j];
+                        arr[i][j]=sum;
+                        printf("%d1\t",arr[i][j]);
+                }
+        }
+        printf("\n");
+        int k=0,r=0;
+        for(int i=0;i<num;i++)
+        {
+                sum=0;
+                for(int j=0;j<num;j++)
+                {
+                        sum+=arr[j][i];
+                        arr[k++][r++]=sum;
+                        printf("%d2\t",arr[k][r]);
+
+                }
+        }
+        printf("\n");
+        printf("\n");
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        printf("%d3\t",arr[i][j]);
+                }
+        }
+        printf("\n");
+}
+```
+## 25.program to count the maximum repeat element number
+```c
+#include<stdio.h>
+void maxmin(int[],int);
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        int arr[num];
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        maxmin(arr,num);
+}
+void maxmin(int arr[],int num)
+{
+        int count=0;
+        for(int i=0;i<num;i++)
+        {
+                for(int j=i+1;j<num;j++)
+                {
+                        if(arr[i]==arr[j])
+                        {
+                                count++;
+                        }
+                }
+        }
+}
+```
+## 26.program to remove the element in a array
+```c
+#include<stdio.h>
+void delete(int[],int,int);
+int main()
+{
+        int num;
+        printf("number");
+        scanf("%d",&num);
+        int arr[num];
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        int pos;
+        printf("enter the postion");
+        scanf("%d",&pos);
+        delete(arr,num,pos);
+}
+void delete(int arr[],int num,int pos)
+{
+        for(int i=pos-1;i<num;i++)
+        {
+                arr[i]=arr[i+1];
+        }
+        num--;
+        for(int j=0;j<num;j++)
+        {
+                printf("%d",arr[j]);
+        }
+}
+```
+## 27."Write a C program to read an n × n matrix and find the sum of its left diagonal (secondary diagonal) elements."
+```c
+#include<stdio.h>
+#define size 100
+void transpose(int[][100],int);
+void ldiagonal(int[][100],int);
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        int arr[100][100];
+        printf("enter the elements:");
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        printf("%d\t",arr[i][j]);
+                }
+                printf("\n");
+        }
+        ldiagonal(arr,num);
+//      transpose(arr,num);
+}
+void transpose(int arr[][100],int num)
+{
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        int temp=arr[i][j];
+                        arr[i][j]=arr[j][i];
+                        arr[j][i]=temp;
+                }
+        }
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        printf("%d\t",arr[i][j]);
+                }
+                printf("\n");
+        }
+}
+void ldiagonal(int arr[][100],int num)
+{
+        int sum=0;
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        if(i+j==(num-1))
+                        {
+                                sum=sum+arr[i][j];
+                        }
+
+                }
+        }
+        printf("%d",sum);
 }
 ```
