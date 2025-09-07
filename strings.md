@@ -1034,3 +1034,57 @@ int main()
         printf("%d",count);
 }
 ```
+## 38.Write a C program to replace digits with their word equivalents.Example: "c2d5" → "ctwodfive" explain logic
+```c
+int main()
+{
+        //"c2d5" → "ctwodfive"
+        char str[100];
+        printf("enter the string");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        for(int i=0;str[i]!='\0';i++)
+        {
+                if(str[i]>='0'&&str[i]<='9')
+                {
+                int a=str[i]-'0';
+                switch(a)
+                {
+                        case 1:
+                                printf("one");
+                                break;
+                        case 2:
+                                printf("two");
+                                break;
+                        case 3:
+                                printf("three");
+                                break;
+                        case 4:
+                                printf("four");
+                                break;
+                        case 5:
+                                printf("five");
+                                break;
+                        case 6:
+                                printf("six");
+                                break;
+                        case 7:
+                                printf("seven");
+                                break;
+                        case 8:
+                                printf("eight");
+                                break;
+                        default:
+                                printf("nine");
+                                break;
+                }
+                }
+                else
+                {
+                        printf("%c",str[i]);
+                }
+        }
+        printf("\n");
+}
+```
+```
