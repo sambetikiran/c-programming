@@ -1151,17 +1151,6 @@ void display()
                 }
         }
 }
-
-
-
-
-
-
-
-
-
-
-
 int main()
 {
         int num,data;
@@ -1177,6 +1166,110 @@ int main()
         printf("enter the middle");
         scanf("%d",&add);
         addnodemiddle(add);
+        display();
+}
+```
+## 15."Write a C program to merge two singly linked lists by appending the second list at the end of the first list."
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+        int data;
+        struct node *nxt;
+};
+struct node *thead=NULL;
+struct node *phead=NULL;
+void list1(int d)
+{
+        struct node *ptrav,*pnew;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL)
+        {
+                printf("malloc error");
+        }
+        pnew->nxt=NULL;
+        pnew->data=d;
+        if(phead==NULL)
+        {
+                phead=pnew;
+        }
+        else
+        {
+                ptrav=phead;
+                while(ptrav->nxt!=NULL)
+                {
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void list2(int p)
+{
+        struct node *ptrav,*pnew;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL)
+        {
+                printf("malloc error");
+                return;
+        }
+        pnew->data=p;
+        pnew->nxt=NULL;
+        if(thead==NULL)
+        {
+                thead=pnew;
+        }
+        else
+        {
+                ptrav=thead;
+                while(ptrav->nxt!=NULL)
+                {
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void display()
+{
+        struct node *ptrav;
+        ptrav=phead;
+        while(ptrav!=NULL)
+        {
+                printf("%d->",ptrav->data);
+                ptrav=ptrav->nxt;
+        }
+        printf("\n");
+}
+void merge()
+{
+        struct node *ptrav;
+        ptrav=phead;
+        while(ptrav->nxt!=NULL)
+        {
+                ptrav=ptrav->nxt;
+        }
+        ptrav->nxt=thead;
+}
+int main()
+{
+        printf("enter the node");
+        int node,d,p;
+        scanf("%d",&node);
+        printf("enter the list1");
+        for( int i=0;i<node;i++)
+        {
+                scanf("%d",&d);
+                list1(d);
+        }
+        display();
+        printf("enter the list2");
+        for( int i=0;i<node;i++)
+        {
+                scanf("%d",&p);
+                list2(p);
+        }
+        display();
+        merge();
         display();
 }
 ```
