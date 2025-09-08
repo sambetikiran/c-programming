@@ -1163,3 +1163,62 @@ int main()
         return 0;
 }
 ```
+## 41.Write a C program to read a string and compress successive duplicate characters by replacing them with their count.
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[100];
+        char str1[100];
+        printf("enter the string");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        for(int i=0;str[i]!='\0';i++)
+        {
+                str1[i]=str[i];
+        }
+        int count;
+        int max=0;
+        int count1;
+        int j;
+        for(int i=0;i<strlen(str);i++)
+        {
+                count=1;
+                count1=1;
+                for(j=i+1;j<strlen(str);j++)
+                {
+                        if(str[i]==str[j])
+                        {
+                                count++;
+
+                        }
+                }
+                for(j=i+1;j<strlen(str);j++)
+                {
+                        if(str[i]==str[j])
+                        {
+                                count1++;
+                                if(count==count1)
+                                {
+                                        if(count1>max)
+                                        {
+                                                printf("j=%c,j+1=%c\n",str[j],str[j-1]);
+                                                if(str[j]==str[j-1])
+                                                {
+                                                        str[j]=count+'0';
+                                                }
+                                        }
+                                }
+                        }
+                }
+
+                if(count>max)
+                {
+                        max=count;
+                }
+        }
+        printf("%s\n",str);
+        printf("%s\n",str1);
+}
+```
