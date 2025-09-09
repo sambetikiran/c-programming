@@ -1247,3 +1247,48 @@ int main(){
         res[k]='\0';
         printf("%s",res);
 }
+```
+## 43. program to print indec of last occurance of the character.
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[100];
+        printf("enter the string");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        char *ptr;
+        ptr=strrchr(str,'r');
+        if(ptr!=NULL)
+        {
+                printf("%c in input and its index is %ld\n",*ptr,ptr-str);
+        }
+        else
+        {
+                printf("character not found\n");
+        }
+}
+```
+# 44. program to print first index of first occurance of the character
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[100];
+        printf("enter the string");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        char *ptr;
+        ptr=strchr(str,'r');
+        if(ptr!=NULL)
+        {
+                printf("%c in input and its index is %ld\n",*ptr,ptr-str);
+        }
+        else
+        {
+                printf("character not found\n");
+        }
+}
+```
