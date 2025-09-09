@@ -1222,3 +1222,28 @@ int main()
         printf("%s\n",str1);
 }
 ```
+## 42.Write a C program to perform run-length encoding (string compression), where consecutive repeating characters are replaced with the character followed by their count
+```c
+#include<stdio.h>
+#include<string.h>
+int main(){
+        char str[100],res[100];
+        int count=1,k=0;
+        printf("Enter the string:");
+        fgets(str,sizeof(str),stdin);
+        if(str[strlen(str)-1]=='\n')
+                str[strlen(str)-1]='\0';
+        int len=strlen(str);
+        for(int i=0;i<len;i++){
+                if(str[i]==str[i+1])
+                        count++;
+                else{
+                        res[k++]=str[i];
+                        if(count>1)
+                                res[k++]=count+'0';
+                        count=1;
+                }
+        }
+        res[k]='\0';
+        printf("%s",res);
+}
