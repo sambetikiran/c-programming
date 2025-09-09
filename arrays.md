@@ -1467,3 +1467,23 @@ void number(int first[],int second[],int num)
         }
 }
 ```
+## 38. program to insert an element in particular postion in an array
+```c
+#include<stdio.h>
+int main()
+{
+        int arr[5]={1,2,3,4,5};
+        int num=5;
+        int value=10;
+        int i,pos=2;
+        for(i=num;i>pos;i--)
+        {
+                arr[i]=arr[i-1];
+        }
+        arr[pos]=value;
+        for(i=0;i<num;i++)
+        {
+                printf("%d",arr[i]);
+        }
+}
+```
