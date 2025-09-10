@@ -1487,3 +1487,71 @@ int main()
         }
 }
 ```
+## 39.program to print the 4x4 2d array  of in spiral order
+```c
+#include<stdio.h>
+int main()
+{
+        int num;
+        printf("enter the num");
+        scanf("%d",&num);
+        int arr[num][num];
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        int count=0;
+        int count1=0;
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        if(i==0&&j!=num-1)
+                        {
+                                printf("%d-",arr[i][j]);
+                        }
+                        else if(j==num-1&&i!=num-1)
+                        {
+
+                                printf("%d-",arr[i][j]);
+                        }
+                        else if(i==num-1)
+                        {
+                                count++;
+                                printf("%d-",arr[i][num-count]);
+                        }
+                }
+        }
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        if(j==0)
+                        {
+                                count1++;
+                                if(i!=0&&i!=num-1)
+                                {
+                                        printf("%d-",arr[num-count1][j]);
+                                }
+                        }
+                }
+        }
+        for(int i=1;i<num-1;i++)
+        {
+                for(int j=1;j<num-1;j++)
+                {
+                        if(i==num-2)
+                        {
+                                printf("%d-",arr[i][j]);
+                        }
+                        else
+                        {
+                                printf("%d-",arr[i][j]);
+                        }
+                }
+        }
+}
+```
