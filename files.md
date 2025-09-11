@@ -59,3 +59,30 @@ int main()
         fclose(fp);
 }
 ```
+## 3.Write a C program to read a file "file1.txt", replace all occurrences of the word "world" with "universe", and write the result to a new file "new.txt".
+```c
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int main()
+{
+        FILE *fp,*new;
+        fp=fopen("file1.txt","r");
+        new=fopen("new.txt","w");
+        char word[100];
+        if(fp==NULL)
+        {
+                printf("open error");
+                exit(0);
+        }
+        while(fscanf(fp,"%s",word)!=EOF)
+        {
+                if(strcmp("world",word)==0)
+                {
+                        strcpy(word,"universe");
+                }
+                fprintf(new," %s",word);
+        }
+        fclose(fp);
+}
+```
