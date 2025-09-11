@@ -32,3 +32,30 @@ int main()
         fclose(fp);
 }
 ```
+## 2.program to print only vowel charcter starting word using files
+```c
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int main()
+{
+        FILE *fp;
+        fp=fopen("file1.txt","r");
+        char  buf[100];
+        if(fp==NULL)
+        {
+                printf("open error");
+                exit(0);
+        }
+        int count=0;
+        while(fscanf(fp,"%s",buf)!=EOF)
+        {
+                if(buf[0]=='a'||buf[0]=='e'||buf[0]=='i'||buf[0]=='o'||buf[0]=='u')
+                {
+                        printf("%s\n",buf);
+                        count++;
+                }
+        }
+        fclose(fp);
+}
+```
