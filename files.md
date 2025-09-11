@@ -86,3 +86,35 @@ int main()
         fclose(fp);
 }
 ```
+## 4. program to read the file and print the palindrome words from the file 
+```c
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int main()
+{
+        FILE *fp=fopen("file1.txt","r");
+        char buf[100];
+        if(fp==NULL)
+        {
+                printf("open error");
+                exit(0);
+        }
+        char word[100];
+        int k=0;
+        while(fscanf(fp,"%s",buf)!=EOF)
+        {
+                for(int i=strlen(buf)-1;i>=0;i--)
+                {
+                        word[k++]=buf[i];
+                }
+                word[k]='\0';
+                if(strcmp(word,buf)==0)
+                {
+                        printf("%s\n",word);
+                }
+                k=0;
+        }
+        fclose(fp);
+}
+```
