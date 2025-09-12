@@ -118,3 +118,80 @@ int main()
         fclose(fp);
 }
 ```
+## 5. program to perform write,read,update(append) and finally delete the file
+```c
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+void create()
+{
+        FILE *fp;
+        char new[100];
+        fp=fopen("new1.txt","w");
+        if(fp==NULL)
+        {
+                printf("open error in create");
+                return;
+        }
+        printf("enter the string:");
+        fgets(new,sizeof(new),stdin);
+        fprintf(fp,"%s",new);
+        new[strcspn(new,"\n")]='\0';
+        fclose(fp);
+}
+void read()
+{
+        FILE *fp;
+        char new[100];
+        fp=fopen("new1.txt","r");
+        if(fp==NULL)
+        {
+                printf("open error in read\n");
+                return;
+        }
+        while(fgets(new,sizeof(new),fp)!=NULL)
+        {
+                printf("%s",new);
+        }
+        new[strcspn(new,"\n")]='\0';
+        fclose(fp);
+}
+void update()
+{
+        FILE *fp;
+        char new[100];
+        fp=fopen("new1.txt","a");
+        if(fp==NULL)
+        {
+                printf("open error in update\n");
+                return;
+        }
+        fgets(new,sizeof(new),stdin);
+        fprintf(fp,"%s",new);
+        fclose(fp);
+}
+void deleteFile() {
+    char filename[100];
+    printf("Enter filename to delete: ");
+    scanf("%s", filename);
+
+    if (remove(filename) == 0)
+        printf("File deleted successfully!\n");
+    else
+        printf("Error deleting file!\n");
+}
+int main()
+{
+        create();
+        read();
+        update();
+        read();
+        printf("enter the number='0' if file want to delete");
+        int num;
+        scanf("%d",&num);
+        if(num==0)
+        {
+        deleteFile();
+        }
+}
+```
