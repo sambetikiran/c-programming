@@ -1292,3 +1292,80 @@ int main()
         }
 }
 ```
+## 45.Write a C program to find the first substring in a given string that matches the letter–digit pattern of another string (letters = any alphabet, digits = any number).
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[100];
+        printf("enter the string");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int len=strlen(str);
+        char find[]="a1bb";
+        for(int i=0;i<len;i++)
+        {
+                if(str[i]>='A'&&str[i]<='Z')
+                {
+                        str[i]=str[i]+32;
+                }
+        }
+        int count=0;
+        int len1=strlen(find);
+        int sum=0;
+        int arr[100];
+        int i;
+        for(i=0;i<len1;i++)
+        {
+                if(find[i]>='a'&&find[i]<='z')
+                {
+                        arr[i]=1;
+                }
+                else if(find[i]>='0'&&find[i]<='9')
+                {
+                        arr[i]=0;
+                }
+        }
+        int add=0;
+        int num[100];
+        int k=0;
+        int r=0;
+        char word[100];
+        int found;
+        for(int i=0;i<=len-len1;i++)
+        {
+                int k=0;
+                r=0;
+                int flag=1;
+                for(int j=i;j<=len1+i;j++)
+                {
+                        if(str[j]>='a'&&str[j]<='z')
+                        {
+                                num[k++]=1;
+                                word[r++]=str[j];
+                        }
+                        else if(str[j]>='0'&&str[j]<='9')
+                        {
+                                num[k++]=0;
+                                word[r++]=str[j];
+                        }
+                }
+                word[k]='\0';
+                found=1;
+                for(int l=0;l<len1;l++)
+                {
+                        if(arr[l]!=num[l])
+                        {
+                                found=0;
+                                break;
+                        }
+                }
+                if(found)
+                {
+                        printf("found=%s\n",word);
+                        break;
+                }
+        }
+}
+```
