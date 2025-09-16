@@ -275,7 +275,7 @@ execle() is a function in the exec() family that replaces the current process im
 Unlike execl(), it allows the caller to specify environment variables explicitly instead of inheriting the parent’s environment.
 ```
 ## 28. Write a C program to demonstrate the use of the system() function for executing shell commands. 
-```
+```c
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
@@ -304,4 +304,9 @@ they are some states they are:
 4.waiting/blocked- process executing in the events in the process
 5.terminated- using exit/ wait termination status will get or zombie process will occur
 6. suspended- it means the process that will stop or suspended due to invalid behaviour of program.
+```
+## 31. Discuss the role of the execv() function in the exec() family of calls. 
+```
+the role of execv() is when execfamily call the current image process will replace with new  image process
+and these will have three argumnets address of the file,and array of character pointers will there
 ```
