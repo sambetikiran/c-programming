@@ -240,5 +240,68 @@ int main()
 }
 To avoid zombie process we have to check the program whether the parent is collecting the exit status of child process or not using wait blocking call
 ```
-
-
+## 22.Write a C program to demonstrate the use of the waitpid() function for process synchronization.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<sys/wait.h>
+#include<unistd.h>
+int main()
+{
+        int stats;
+        int pid=fork();
+        if(pid==0)
+        {
+                printf("child process\n");
+                sleep(3);
+                exit(5);
+        }
+        else
+        {
+                int wpid=waitpid(pid,&stats,0);
+                printf("parent process\n");
+                if(wpid<0)
+                {
+                        printf("%d",wpid);
+                        exit(0);
+                }
+                printf("pid will be %d\n",WEXITSTATUS(stats));
+        }
+}
+```
+## 23. Discuss the role of the execle() function in the exec() family of call
+```
+execle() is a function in the exec() family that replaces the current process image with a new program, passing a list of arguments and a custom environment for the new program.
+Unlike execl(), it allows the caller to specify environment variables explicitly instead of inheriting the parent’s environment.
+```
+## 28. Write a C program to demonstrate the use of the system() function for executing shell commands. 
+```
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<sys/wait.h>
+int main()
+{
+        printf("enter the command of 'ls -l' ");
+        int ret=system("ls -l");
+        if(ret<0)
+        {
+                printf("error\n");
+        }
+        else
+        {
+                printf("command executed within the value %d\n",ret);
+        }
+}
+```
+## 29. Explain the concept of process states in UNIX-like operating systems.
+```
+the process is a program in execution is called process
+they are some states they are:
+1.creating process- process is creating using fork()
+2.runable-process is loaded in memory(a.out) waiting for CPU to execute based on schedular
+3.running- process is executed in CPU.
+4.waiting/blocked- process executing in the events in the process
+5.terminated- using exit/ wait termination status will get or zombie process will occur
+6. suspended- it means the process that will stop or suspended due to invalid behaviour of program.
+```
