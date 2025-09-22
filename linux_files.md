@@ -55,3 +55,26 @@ int main()
         close(fd);
 }
 ```
+## prorgam to printing word by word from a file
+```c
+#include<stdio.h>
+#include<unistd.h>
+#include<string.h>
+#include<fcntl.h>
+int main()
+{
+        int fd=open("create1.txt",O_RDONLY,0644);
+        char ch;
+        ssize_t n;
+        while((n=read(fd,&ch,1))>0)
+        {
+                if(ch==' '||ch=='\n')
+                {
+                        printf("\n");
+                        continue;
+                }
+                write(1,&ch,1);
+        }
+        close(fd);
+}
+```
