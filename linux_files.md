@@ -35,6 +35,29 @@ int main()
         close(fd);
 }
 ```
+## program to print how many lines in a given file
+```c
+#include<stdio.h>
+#include<string.h>
+#include<unistd.h>
+#include<fcntl.h>
+int main()
+{
+        int fd=open("create1.txt",O_RDONLY,0644);
+        char ch;
+        ssize_t n;
+        int count=0;
+        while((n=read(fd,&ch,1))>0)
+        {
+                if(ch=='\n')
+                {
+                        count++;
+                }
+        }
+        printf("numberr of lines are-->%d\n",count);
+        close(fd);
+}
+```
 ## program to read the a line from a file
 ```c
 #include<stdio.h>
