@@ -35,3 +35,23 @@ int main()
         close(fd);
 }
 ```
+## program to read the a line from a file
+```c
+#include<stdio.h>
+#include<unistd.h>
+#include<fcntl.h>
+#include<string.h>
+int main()
+{
+        int fd=open("create1.txt",O_RDONLY,0644);
+        char ch;
+        ssize_t n;
+        while(n=read(fd,&ch,1)>0&&ch!='\n')
+        {
+                write(1,&ch,1);
+        }
+        printf("\n");
+
+        close(fd);
+}
+```
