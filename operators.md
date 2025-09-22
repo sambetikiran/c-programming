@@ -504,3 +504,36 @@ int main() {
     return 0;
 }
 ```
+## 26.Write a C program to remove duplicate elements from an array and print the resulting array.
+```c
+#include <stdio.h>
+
+int main() {
+    int n, i, j, k;
+    printf("Enter array size: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter array elements:\n");
+    for (i = 0; i < n; i++)
+        scanf("%d", &arr[i]);
+
+    for (i = 0; i < n; i++) {
+        for (j = i + 1; j < n; j++) {
+            if (arr[i] == arr[j]) {
+                for (k = j; k < n - 1; k++)
+                    arr[k] = arr[k + 1];
+                n--;
+                j--;
+            }
+        }
+    }
+
+    printf("Resulting array: ");
+    for (i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+
+    return 0;
+}
+```
