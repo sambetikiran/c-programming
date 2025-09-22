@@ -1789,4 +1789,124 @@ int main()
         return 0;
 }
 ```
+## 46.Write a recursive function to reverse the elements of an array.
+```c
+#include<stdio.h>
+void reverse(int a[],int start,int end)
+{
+        if(start >= end)
+                return;
+        int temp=a[start];
+        a[start] = a[end];
+        a[end] = temp;
+
+        reverse(a,start+1,end-1);
+}
+
+int main()
+{
+        int n,i;
+        printf("enter array size: ");
+        scanf("%d",&n);
+
+        int arr[n];
+        printf("enter elements:\n");
+        for(i=0;i<n;i++)
+                scanf("%d",&arr[i]);
+
+        reverse(arr,0,n-1);
+
+        printf("reversed array is :\n");
+        for(i=0;i<n;i++)
+                printf("%d  ",arr[i]);
+        printf("\n");
+
+        return 0;
+}
+```
+## 47.Write a recursive function that finds the sum of all elements of an array by repeatedly partitioning it into two almost equal parts.
+```c
+#include<stdio.h>
+int partitionsum(int a[],int start,int end)
+{
+        if (start>end)
+                return 0;
+        if(start==end)
+                return a[start];
+        int mid=(start+end)/2;
+        int firstpart=partitionsum(a,start,mid);
+        int secondpart=partitionsum(a,mid+1,end);
+        return firstpart+secondpart;
+}
+
+int main()
+{
+        int n,i,res;
+        printf("enter array size: ");
+        scanf("%d",&n);
+
+        int arr[n];
+        printf("enter array elements:\n");
+        for(i=0;i<n;i++)
+                scanf("%d",&arr[i]);
+
+        res=partitionsum(arr,0,n-1);
+        printf("sum of elements after partitioning into two equal parts is %d\n",res);
+}
+```
+## 48.Write a recursive function to find the sum of all even numbers in an array.
+```c
+#include<stdio.h>
+int even_sum(int a[],int n)
+{
+        if(n==0)
+                return 0;
+        int ele=a[n-1];
+        return (ele%2 == 0) ? ele + even_sum(a,n-1) : even_sum(a,n-1);
+}
+
+int main()
+{
+        int n,i;
+        printf("enter size: ");
+        scanf("%d",&n);
+
+        int arr[n];
+        printf("enter elements:\n");
+        for(i=0;i<n;i++)
+                scanf("%d",&arr[i]);
+
+        printf("sum of even numbers in array is %d\n",even_sum(arr,n));
+        return 0;
+}
+```
+## 49.Write a program to check if elements of an array are distinct or not.
+```c
+#include<stdio.h>
+int main()
+{
+        int n,i,j,found=0;
+        printf("enter array size: ");
+        scanf("%d",&n);
+
+        int a[n];
+        printf("enter elements:\n");
+        for(i=0;i<n;i++)
+                scanf("%d",&a[i]);
+
+        for(i=0;i<n;i++)  {
+                for(j=i+1;j<n;j++)  {
+                        if(a[i]==a[j])  {
+                                found=1;
+                                break;
+                        }
+                }
+        }
+        if(!found)
+                printf("elements of array are Distinct\n");
+        else
+                printf("elements of array are not distinct\n");
+return 0;
+}
+```
 
