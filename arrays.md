@@ -1643,4 +1643,150 @@ int main()
         }
 }
 ```
+## 42.Write a program to modify the elements of an array such that the first element becomes the last element of the array and all other elements are shifted towards left.
+## 1 2 3 4 5 6 7 8 9 -> 2 3 4 5 6 7 8 9 1
+```c
+#include<stdio.h>
+int main()
+{
+        int i,j,n;
+        printf("enter size: ");
+        scanf("%d",&n);
+
+        int a[n];
+        printf("elements: \n");
+        for(i=0;i<n;i++)
+                scanf("%d",&a[i]);
+
+        //1st ele becomes last ele, all other shifted towards left
+        int las=a[0];
+        for(i=0;i<n;i++)  {
+                a[i]=a[i+1];
+        }
+        a[n-1]=las;
+
+        printf("array after modified:\n");
+        for(i=0;i<n;i++){
+                printf("%d ",a[i]);
+        }
+}
+```
+## 43.Write a program to reverse a portion of an array.
+```c
+#include<stdio.h>
+int main()
+{
+        int n;
+        printf("enter size: ");
+        scanf("%d",&n);
+
+        int ar[n];
+        printf("enter ele :\n");
+        for(int i=0;i<n;i++){
+                scanf("%d",&ar[i]);
+        }
+
+        int a,b;
+        printf("enter index from where to where: ");
+        scanf("%d%d",&a,&b);
+
+        int i=a,j=b;
+        while(i<j)
+        {
+                int temp=ar[i];
+                ar[i]=ar[j];
+                ar[j]=temp;
+                i++;
+                j--;
+        }
+        printf("array after modified:\n");
+        for(i=0;i<n;i++)
+        {
+                printf("%d ",ar[i]);
+        }
+}
+```
+## 44.Write a program to print Spiral Matrix. A spiral matrix is a n x n square matrix formed by placing the numbers 1, 2, 3, 4 .........n² in spiral form starting from the leftmost column and topmost row. Spiral matrices can exist for both even and odd values of n. The spiral matrices for n=3, n=4, n=7 are shown below
+```c
+#include<stdio.h>
+int main()
+{
+        int n;
+        printf("enter n value: ");
+        scanf("%d",&n);
+
+        int a[n][n];
+        int top=0,down=(n-1),left=0,right=(n-1),i,j;
+        int k=1;
+        while(top<=down && left<=right){
+
+        for(i=left;i<=right;i++){
+                a[top][i]=k;
+                k++;
+        }
+        top++;
+
+        for(i=top;i<=down;i++){
+                a[i][right]=k;
+                k++;
+        }
+        right--;
+
+        for(i=right;i>=left;i--){
+                a[down][i]=k;
+                k++;
+        }
+        down--;
+
+        for(i=down;i>=top;i--){
+                a[i][left]=k;
+                k++;
+        }
+        left++;
+
+        }
+
+        for(i=0;i<n;i++){
+                for(j=0;j<n;j++){
+                        printf("%3d",a[i][j]);
+                }
+                printf("\n");
+        }
+
+        return 0;
+}
+```
+## 45. Write a recursive function to find whether the elements of an array are in strict ascending order or not.
+```c
+#include<stdio.h>
+#include<stdbool.h>
+
+bool isascending(int a[],int n)
+{
+        if(n<=1)
+                return true;
+        if(a[n-1]<a[n-2])
+                return false;
+        return isascending(a,n-1);
+}
+
+int main()
+{
+        int n,i;
+        printf("enter array size: ");
+        scanf("%d",&n);
+
+        int arr[n];
+        printf("enter elements:\n");
+        for(i=0;i<n;i++)
+                scanf("%d",&arr[i]);
+
+        if(isascending(arr,n))
+                printf("array is in ascending order.\n");
+        else
+                printf("not in ascending order.\n");
+
+        return 0;
+}
+```
 
