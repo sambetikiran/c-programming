@@ -332,3 +332,21 @@ int main() {
     return 0;
 }
 ```
+## 19.Write a C program to find the LCM (Least Common Multiple) of two numbers.
+```c
+#include <stdio.h>
+
+int main() {
+    int a, b, i;
+    printf("Enter 2 numbers: ");
+    scanf("%d %d", &a, &b);
+
+    for (i = 1; i <= (a * b); i++) {
+        if ((a * i) % b == 0) {
+            printf("LCM is %d\n", (a * i));
+            break;
+        }
+    }
+    return 0;
+}
+```
