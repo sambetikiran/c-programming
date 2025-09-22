@@ -1555,3 +1555,92 @@ int main()
         }
 }
 ```
+## 40. program to print the symmetric matrix.
+```c
+#include<stdio.h>
+#define max 100
+int sym(int num,int arr[num][num])
+{
+        int found=0;
+        for( int i=0;i<num;i++)
+        {
+                for( int j=i+1;j<num;j++)
+                {
+                        if( arr[i][j]!=arr[j][i])
+                        {
+                                return 0;
+                        }
+                }
+        }
+        return 1;
+}
+
+
+int main()
+{
+        int num;
+        printf("enter the row");
+        scanf("%d",&num);
+        int arr[num][num];
+        for(int i=0;i<num;i++)
+        {
+                for( int j=0;j<num;j++)
+                {
+                        scanf("%d",&arr[i][j]);
+                }
+        }
+        for(int i=0;i<num;i++)
+        {
+                for( int j=0;j<num;j++)
+                {
+                        printf("%d\t",arr[i][j]);
+                }
+                printf("\n");
+        }
+        int s=sym(num,arr);
+        if(s==1)
+        {
+                printf("it is a symtric");
+        }
+        else
+        {
+                printf("it is not symmetric");
+        }
+}
+```
+## 41. program to print the kth smallest element.
+```c
+#include<stdio.h>
+int main()
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        int k;
+        printf("enter k");
+        scanf("%d",&k);
+        int arr[num];
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        int count=0;
+        for(int i=0;i<num-1;i++)
+        {
+                for(int j=0;j<num-1-i;j++)
+                {
+                        if(arr[j]>arr[j+1])
+                        {
+                                int temp=arr[j];
+                                arr[j]=arr[j+1];
+                                arr[j+1]=temp;
+                        }
+                }
+        }
+        if(k>=0&&k<=9)
+        {
+                printf("%dth is the smallest element is %d",k,arr[k-1]);
+        }
+}
+```
+
