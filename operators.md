@@ -314,7 +314,7 @@ int main()
 }
 ```
 ## 18.Write a C program to find the GCD (Greatest Common Divisor) of two numbers using the Euclidean algorithm.
-``c
+```c
 #include <stdio.h>
 
 int main() {
@@ -347,6 +347,112 @@ int main() {
             break;
         }
     }
+    return 0;
+}
+```
+## 20.Write a C program to print the multiplication table of a given number up to 10.
+```c
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= 10; i++) {
+        printf("%d * %d = %d\n", n, i, n * i);
+    }
+
+    return 0;
+}
+```
+## 21.Write a C program to print all Armstrong numbers between 1 and 1000.
+```c
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int num, n, res, d, i;
+
+    for (i = 1; i <= 1000; i++) {
+        num = i;
+        d = 0;
+        res = 0;
+
+        while (num) {
+            num = num / 10;
+            d++;
+        }
+
+        num = i;
+        while (num) {
+            n = num % 10;
+            res += pow(n, d);
+            num = num / 10;
+        }
+
+        if (i == res) {
+            printf("%d is an Armstrong number\n", i);
+        }
+    }
+
+    return 0;
+}
+```
+## 22.Write a C program to implement a simple calculator using switch case for +, -, *, /, %.
+```c
+#include <stdio.h>
+
+int main() {
+    int a, b, res;
+    char opt;
+
+    printf("Enter values: ");
+    scanf("%d %d", &a, &b);
+
+    printf("Choose operation (+ - * / %): ");
+    scanf(" %c", &opt);
+
+    switch (opt) {
+        case '+': res = a + b; break;
+        case '-': res = a - b; break;
+        case '*': res = a * b; break;
+        case '/': 
+            if (b != 0) res = a / b; 
+            else { printf("Can't divide by 0\n"); return 1; }
+            break;
+        case '%': 
+            if (b != 0) res = a % b; 
+            else { printf("Can't divide by 0\n"); return 1; }
+            break;
+        default: printf("Invalid input\n"); return 1;
+    }
+
+    printf("Result is %d\n", res);
+    return 0;
+}
+```
+## 23.Write a C program to check whether a given number is a Palindrome or not.
+```c
+#include <stdio.h>
+
+int main() {
+    int num, res = 0, n, org;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    org = num;
+    while (num != 0) {
+        n = num % 10;
+        res = (res * 10) + n;
+        num = num / 10;
+    }
+
+    if (org == res)
+        printf("Palindrome\n");
+    else
+        printf("Not a palindrome\n");
+
     return 0;
 }
 ```
