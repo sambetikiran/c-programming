@@ -456,3 +456,51 @@ int main() {
     return 0;
 }
 ```
+## 24.Write a C program to find the sum of elements in the lower triangular part of an m x m matrix.
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j, m, sum = 0;
+    printf("Enter m for m*m matrix: ");
+    scanf("%d", &m);
+
+    int mat[m][m];
+    printf("Enter matrix values:\n");
+    for (i = 0; i < m; i++)
+        for (j = 0; j < m; j++)
+            scanf("%d", &mat[i][j]);
+
+    for (i = 0; i < m; i++)
+        for (j = 0; j < m; j++)
+            if (i >= j)
+                sum += mat[i][j];
+
+    printf("Sum of lower triangular matrix = %d\n", sum);
+    return 0;
+}
+```
+## 25 Write a C program to find the sum of elements in the upper triangular part of an m x m matrix.
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j, m, sum = 0;
+    printf("Enter m for m*m matrix: ");
+    scanf("%d", &m);
+
+    int mat[m][m];
+    printf("Enter matrix values:\n");
+    for (i = 0; i < m; i++)
+        for (j = 0; j < m; j++)
+            scanf("%d", &mat[i][j]);
+
+    for (i = 0; i < m; i++)
+        for (j = 0; j < m; j++)
+            if (i <= j)
+                sum += mat[i][j];
+
+    printf("Sum of upper triangular matrix = %d\n", sum);
+    return 0;
+}
+```
