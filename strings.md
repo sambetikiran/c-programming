@@ -1369,3 +1369,58 @@ int main()
         }
 }
 ```
+## 46. Write a C program to reverse all the vowels present in a given string. Return the newly created string.
+```c
+#include<stdio.h>
+#include<ctype.h>
+#include<string.h>
+int main()
+{
+        char str[30],vow[30],ch;
+        printf("Enter string: ");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+
+        int i=0,j=0;
+        while(str[i])
+        {
+                ch=tolower(str[i]);
+                if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u')
+                {
+                        vow[j++]=str[i];
+                }
+                i++;
+        }
+        vow[j]='\0';
+        i=0;
+        j=strlen(vow);
+        while(str[i])
+        {
+                ch=tolower(str[i]);            
+                if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u')
+                {
+                             str[i]=vow[j-1];
+                             j--;
+                }                                 
+                i++;
+        }
+        printf("Final string is \"%s\"",str);
+        return 0;
+}
+```
+## 46.Write a program in C to check whether a character is a digit or not.
+```c
+#include<stdio.h>
+#include<ctype.h>
+int main()
+{
+        char ch;
+        printf("Enter char: ");
+        scanf("%c",&ch);
+                if(isdigit(ch))
+                        printf("Its digit.\n");
+                else
+                        printf("Not a digit.\n");
+        return 0;
+}
+```
