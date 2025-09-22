@@ -1424,3 +1424,19 @@ int main()
         return 0;
 }
 ```
+## 46. Write a program in C to check whether a character is a Hexadecimal Digit or not.
+```c
+#include<stdio.h>
+#include<ctype.h>
+int main()
+{
+        char ch;
+        printf("Enter char: ");
+        scanf("%c",&ch);
+                if(isxdigit(ch))
+                        printf("Is hexadigit\n");
+                else
+                        printf("Not a hexadigit\n");
+        return 0;
+}
+```
