@@ -1440,3 +1440,30 @@ int main()
         return 0;
 }
 ```
+## 47. program to remove extra spaces in the string
+```c
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+        char str[]="hello  world   i am  kiran";
+        int len=strlen(str);
+        for(int i=0;i<len;)
+        {
+
+                if(str[i]==' '&&str[i+1]==' ')
+                {
+                        for(int j=i+1;j<len;j++)
+                        {
+                                str[j]=str[j+1];
+                        }
+                        len--;
+                }
+                else
+                {
+                        i++;
+                }
+        }
+        printf("%s\n",str);
+}
+```
