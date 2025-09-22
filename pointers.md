@@ -416,3 +416,609 @@ int main()
         return 0;
 }
 ```
+```
+## 27.  Develop a function to reverse an array of integers in place using pointers. 
+```c
+#include<stdio.h>
+int reverse(int n,int arr[n]);
+int main()
+{
+        int n;
+        printf("enter n: ");
+        scanf("%d",&n);
+        int arr[n];
+        for(int i=0;i<n;i++)
+                scanf("%d",&arr[i]);
+        reverse(n,arr);
+        printf("reversed array is: ");
+        for(int i=0;i<n;i++)
+                printf("%d ",arr[i]);
+        return 0;
+}
+int reverse(int n,int *arr)
+{
+        int i,j,temp;
+        for(i=0,j= n-1;i<j;i++,j--)
+        {
+                temp = *(arr+i);
+                *(arr+i) = *(arr+j);
+                *(arr+j) = temp;
+        }
+}
+```
+
+## 28.  Write a program to find the largest element using Dynamic Memory Allocation.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+        int *p,n,i;
+        printf("enter no. of elements: ");
+        scanf("%d",&n);
+        p=(int *)malloc(n*sizeof(int));
+        if(p==NULL)
+        {
+                printf("memory not avalable.\n");
+                exit(1);
+        }
+        printf("enter elements:\n");
+        for(i=0;i<n;i++)
+        {
+                scanf("%d",&p[i]);
+        }
+        int lar=p[0];
+        for(i=1;i<n;i++)
+        {
+                if(p[i]>lar)
+                {
+                        lar=p[i];
+                }
+        }
+        printf("largest element is %d",lar);
+        return 0;
+}
+```
+## 29. Write a program in C to calculate the length of a string using a pointer.
+```c
+#include<stdio.h>
+int main()
+{
+        char str[100];
+        int len=0;char *ptr;
+        printf("enter string: ");
+        fgets(str,100,stdin);
+        ptr=str;
+        while(*ptr !='\0')
+        {
+                len++;
+                ptr++;
+        }
+        printf("length of string is %d\n",len);
+return 0;
+}
+
+```
+## 30. Write a program  to swap elements using call by reference. 
+```c
+#include<stdio.h>
+int swap(int *x,int *y);
+int main()
+{
+        int a,b;
+        printf("enter a, b values: ");
+        scanf("%d%d",&a ,&b);
+        swap(&a,&b);
+        printf("swapped values a=%d, b=%d",a,b);
+        return 0;
+}
+int swap(int *x,int *y)
+{
+        int temp=*x;
+        *x = *y;
+        *y = temp;
+}
+```
+## 31. Write a program to find the factorial of a given number using pointers. 
+```c
+#include<stdio.h>
+void findFactorial(int num, int *fact)
+{
+        *fact = 1;
+        for (int i = 1; i <= num; i++) {
+                *fact *= i;
+    }
+}
+int main()
+{
+        int n,res;
+        printf("enter n value: ");
+        scanf("%d",&n);
+        findFactorial(n,&res);
+        printf("factorial of %d is %d",n,res);
+        return 0;
+}
+```
+
+## 32. Write a program to count the number of vowels and consonants in a string using a pointer.
+```c
+#include<stdio.h>
+#include<ctype.h>
+int main()
+{
+        char str[100];
+        printf("enter string: ");
+        fgets(str,100,stdin);
+        int vowel=0,cons=0;
+        char *p;
+        p = str;
+        while(*p != '\0')
+        {
+                if(isalpha(*p))
+                {
+                        char ch=tolower(*p);
+                        if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u')
+                                vowel++;
+                        else
+                                cons++;
+                }
+                *p++;
+        }
+        printf("In the string, vowels: %d, consonants: %d",vowel,cons);
+        return 0;
+}
+```
+
+## 33.  Write a program  to sort an array using a pointer
+```c
+#include<stdio.h>
+int main()
+{
+        int n;
+        printf("enter array size: ");
+        scanf("%d",&n);
+        int arr[n];
+        for(int i=0;i<n;i++)
+                scanf("%d",&arr[i]);
+        int *p;
+        p=arr;
+        for(int i=0;i<n-1;i++)
+        {
+                for(int j=i+1;j<n;j++)
+                {
+                        if(*(p+j) >*(p+i))
+                        {
+                                int temp= *(p+i);
+                                *(p+i) = *(p+j);
+                                *(p+j) = temp;
+                        }
+                }
+        }
+        printf("sorted array is: ");
+        for(int i=0;i<n;i++)
+                printf("%d ",arr[i]);
+        return 0;
+}
+```
+## 34. Write a  program to demonstrate how a function returns a pointer.
+```c
+#include<stdio.h>
+int* findLarger(int *a, int *b) {
+    if (*a > *b)
+        return a;
+    else
+        return b;
+}
+
+int main()
+{
+    int x = 10, y = 20;
+    int *larger = findLarger(&x, &y);
+    printf("The larger number is: %d\n", *larger);
+    return 0;
+}
+```
+
+## 35. Write a program  to compute the sum of all elements in an array using pointers 
+```c
+#include<stdio.h>
+int main()
+{
+        int n,i;
+        printf("enter array size: ");
+        scanf("%d",&n);
+        printf("enter elements:");
+        int arr[n];
+        for(i=0;i<n;i++)
+                scanf("%d",&arr[i]);
+
+        int sum=0,*ptr;
+ptr=arr;
+        for(i=0;i<n;i++)
+        {
+                sum=sum+(*(ptr+i));
+        }
+        printf("sum is %d",sum);
+        return 0;
+
+}
+```
+## 36. Write a program  to print the elements of an array in reverse order.
+```c
+#include<stdio.h>
+int main()
+{
+        int n,i;
+        printf("enter size : ");
+        scanf("%d",&n);
+        int a[n];
+        printf("enter ele: ");
+        for(i=0;i<n;i++)
+                scanf("%d",&a[i]);
+        int *ptr;
+        ptr=a;
+        printf("reverse order: \n");
+        for(i= n-1;i>=0;i--)
+                printf("%d ",*(ptr+i));
+        return 0;
+}
+```
+## 37. Write a program to show a pointer to an array whose contents are pointers to structures. 
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Student {
+    int roll;
+    char name[20];
+};                                                                                                                      int main() {                                                    // Create structure pointers                                struct Student *s1 = (struct Student *)malloc(sizeof(struct Student));
+    struct Student *s2 = (struct Student *)malloc(sizeof(struct Student));
+
+    // Initialize structure data
+    s1->roll = 101;
+    snprintf(s1->name, sizeof(s1->name), "Alice");
+
+    s2->roll = 102;
+    snprintf(s2->name, sizeof(s2->name), "Bob");
+
+    // Array of pointers to structures
+    struct Student *arr[2];
+    arr[0] = s1;
+    arr[1] = s2;
+    
+    // Pointer to the array
+    struct Student **ptr = arr;
+
+    // Accessing data using pointer to array
+    for (int i = 0; i < 2; i++) {
+        printf("Student %d: Roll = %d, Name = %s\n", i + 1, ptr[i]->roll, ptr[i]->name);
+    }
+
+    // Free memory
+    free(s1);
+    free(s2);
+
+    return 0;
+}
+```
+## 39. Logic to search an element in an array using pointers. 
+```c
+#include<stdio.h>
+int main()
+{
+        int n,i;
+        printf("enter size: ");
+        scanf("%d",&n);
+        int a[n];
+        printf("enter ele: ");
+        for(i=0;i<n;i++)
+                scanf("%d",&a[i]);
+        int *p,x,flag=0;
+        printf("enter ele to search: ");
+        scanf("%d",&x);
+        p=a;
+        for(i=0;i<n;i++)
+        {
+                if((*(p+i)) ==x)
+                {
+                        printf("found\n");
+                        flag=1;
+                }
+        }
+        if(flag==0)
+                printf("not found\n");
+}
+```
+
+## 40. Write a  program to add two matrices using pointers.
+```c
+#include<stdio.h>
+int main()
+{
+        int i,j;
+        int a[3][3],b[3][3];
+        int s[3][3];
+        printf("Enter elements of a-Matrix :\n");
+        for(i=0;i<3;i++)
+        {
+                for(j=0;j<3;j++)
+                {
+                        scanf("%d",(*(a+i)+j));
+                }
+        }
+
+        printf("Enter elements of b-Matrix :\n");
+        for(i=0;i<3;i++)
+        {
+                for(j=0;j<3;j++)
+                {
+                        scanf("%d",(*(b+i)+j));
+                }
+        }
+
+        printf("sum of matrices:\n");
+        for(i=0;i<3;i++)
+        {
+                for(j=0;j<3;j++)
+                {
+*(*(s+i)+j) = *(*(a+i)+j) + *(*(b+i)+j);
+                        printf("%d\t ",*(*(s+i)+j));
+                }
+                printf("\n");
+        }
+
+        return 0;
+}
+```
+
+## 41. Write a program to multiply two matrix using pointers
+```c
+#include<stdio.h>
+int main()
+{
+        int a[3][3],b[3][3];
+        int m[3][3];
+        int i,j,sum;
+
+        printf("enter a-matrix elements:\n");
+        for(i=0;i<3;i++) {
+                for(j=0;j<3;j++) {
+                        scanf("%d",*(a+i)+j);
+                }
+        }
+
+        printf("enter b- matrix elements:\n");
+        for(i=0;i<3;i++) {
+                for(j=0;j<3;j++) {
+                        scanf("%d",*(b+i)+j);
+                }
+        }
+
+        for(i=0;i<3;i++) {
+                for(j=0;j<3;j++) {
+                        for(int k=0;k<3;k++) {
+                                sum = sum + ( (*(*(a+i)+k)) * (*(*(b+k)+j)) );
+                        }
+                        *(*(m+i)+j) = sum;
+                        sum=0;
+}
+        }
+
+        printf("multiplication matrix is: \n");
+        for(i=0;i<3;i++) {
+                for(j=0;j<3;j++) {
+                        printf("%d\t",*(*(m+i)+j));
+                }
+                printf("\n");
+        }
+
+        return 0;
+}
+
+```
+## 44. Program to access dynamically allocated memory as a 1d array
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+        int i,n;
+        printf("array size: ");
+        scanf("%d",&n);
+        int *p;
+        p=(int *)malloc(n*sizeof(int));
+        if(p==NULL)
+        {
+                printf("memory not available\n");
+                exit(0);
+        }
+        printf("enter eleemnts:\n");
+        for(i=0;i<n;i++)
+        {
+                scanf("%d",&p[i]);
+        }
+        printf("array is : ");
+        for(i=0;i<n;i++)
+        {
+                printf("%d ",p[i]);
+        }
+        return 0;
+}
+```
+
+## 45. Program to access dynamically allocate a 2-D array using a pointer to an array
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+        int rows,i,j;
+        printf("enter rows value: ");
+        scanf("%d",&rows);
+        int (*p)[3];
+        p=(int (*)[3])malloc(rows*3* sizeof(int));
+        if(p==NULL)
+        {
+                printf("memory not available\n");
+                exit(0);
+        }
+        printf("enter elements: \n");
+        for(i=0;i<rows;i++){
+                for(j=0;j<3;j++){
+                        scanf("%d",(*(p+i)+j));
+                }
+        }
+
+        printf("the array is:\n");
+        for(i=0;i<rows;i++){
+                for(j=0;j<3;j++){
+                        printf("%d ",*(*(p+i)+j));
+                }
+                printf("\n");
+        }
+        free(p);
+ return 0;
+}
+```
+
+## 46. Write a program to print array of pointer 
+```c
+#include<stdio.h>
+int main()
+{
+        int n,i,j;
+        int var1=10,var2=20,var3=30;
+        int *arr[3];
+        arr[0]=&var1;
+        arr[1]=&var2;
+        arr[2]=&var3;
+        printf("array of pointers:\n");
+        for(i=0;i<3;i++)
+                printf("value of var%d: %d\taddress: %p\n",i+1,*arr[i],arr[i]);
+        return 0;
+}
+```
+## 47. Write a program to print pointer to an array
+```c
+#include<stdio.h>
+int main()
+{
+        int p[3]={12,21,24};
+        int (*ptr)[3];
+ptr = &p;
+        for(int i=0;i<3;i++)
+        {
+                printf("%4d",(*ptr)[i]);
+        }
+        return 0;
+}
+```
+
+## 48. Program to dynamically allocate a 2-D array using array of pointers
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+        int i,j,cols;
+        printf("enter cols: ");
+        scanf("%d",&cols);
+        int *a[3];
+        for(i=0;i<3;i++)
+                a[i]=(int *)malloc(cols*sizeof(int));
+        printf("enter elements:\n");
+        for(i=0;i<3;i++) {
+                for(j=0;j<cols;j++) {
+                        scanf("%d",&a[i][j]);
+                }
+        }
+        printf("the matrix is: \n");
+        for(i=0;i<3;i++) {
+                for(j=0;j<cols;j++) {
+                        printf("%5d",a[i][j]);
+                }
+                printf("\n");
+        }
+        for(i=0;i<3;i++)
+                free(a[i]);
+        return 0;
+}
+```
+## 48. Program to dynamically allocate a 2-D array using array of pointers
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+        int i,j,cols;
+        printf("enter cols: ");
+        scanf("%d",&cols);
+        int *a[3];
+        for(i=0;i<3;i++)
+                a[i]=(int *)malloc(cols*sizeof(int));
+        printf("enter elements:\n");
+        for(i=0;i<3;i++) {
+                for(j=0;j<cols;j++) {
+                        scanf("%d",&a[i][j]);
+                }
+        }
+        printf("the matrix is: \n");
+        for(i=0;i<3;i++) {
+                for(j=0;j<cols;j++) {
+                        printf("%5d",a[i][j]);
+                }
+                printf("\n");
+        }
+        for(i=0;i<3;i++)
+                free(a[i]);
+        return 0;
+}
+```
+
+## 49. Program to invoke a function using function pointer
+```c
+#include<stdio.h>
+int mul(int, int);
+int main()
+{
+        int (*fp)(int, int);
+        int result,a,b;
+        scanf("%d%d",&a,&b);
+        fp=mul;
+        result=(*fp)(a,b);
+        printf("product of a,b is %d\n",result);
+        return 0;
+
+}
+int mul(int x,int y)
+{
+        return x*y;
+}
+```
+
+## 50. Program to send a function ‘s address as an argument to other function
+```c
+#include<stdio.h>
+int max(int,int);
+int large(int ,int,int (*ptr)(int, int));
+int main()
+{
+        int a,b;
+        scanf("%d%d",&a,&b);
+
+        int lar=large(a,b,max);
+        printf(" maximum number is %d",lar);
+}
+int max(int x,int y)
+{
+        if(x>y)
+                return x;
+        else
+                return y;
+}
+int large(int u,int v,int (*ptr)(int, int))
+{
+        return ptr(u,v);
+}
+
+```
