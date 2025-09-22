@@ -313,4 +313,22 @@ int main()
         }
 }
 ```
+## 18.Write a C program to find the GCD (Greatest Common Divisor) of two numbers using the Euclidean algorithm.
+``c
+#include <stdio.h>
 
+int main() {
+    int a, b, r;
+    printf("Enter 2 numbers: ");
+    scanf("%d %d", &a, &b);
+
+    while (b) {
+        r = a % b;
+        a = b;
+        b = r;
+    }
+
+    printf("GCD of 2 numbers is %d\n", a);
+    return 0;
+}
+```
