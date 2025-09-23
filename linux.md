@@ -274,6 +274,16 @@ int main()
 execle() is a function in the exec() family that replaces the current process image with a new program, passing a list of arguments and a custom environment for the new program.
 Unlike execl(), it allows the caller to specify environment variables explicitly instead of inheriting the parent’s environment.
 ```
+## 26.discuss the role of getpid and getppid()
+```
+getpid is used to get the pid number of the process.
+getppid is used to get the ppid number of the particular child process.
+```
+## 27. Difference between fork() and clone()
+```
+fork(): Creates a new process (child) with a separate address space. Uses copy-on-write (COW) for memory.
+clone(): More flexible, allows fine-grained sharing (files, memory, signal handlers). Used internally by pthread_create().
+```
 ## 28. Write a C program to demonstrate the use of the system() function for executing shell commands. 
 ```c
 #include<stdio.h>
@@ -309,4 +319,31 @@ they are some states they are:
 ```
 the role of execv() is when execfamily call the current image process will replace with new  image process
 and these will have three argumnets address of the file,and array of character pointers will there
+```
+## 33. Significance of PIDs
+```
+Unique identifier for processes. Used in signals, scheduling, process groups, monitoring.
+```
+## 34. what is orphan process
+```
+it is the process that parent process is terminated beofre the child process is called orphan process.
+```
+## 36. Describe the concept of process priority and how it is managed in operating systems.
+```
+the priority process will determines the CPU time of particular process.
+based on the CPU time it will give high priority process will be performed 
+```
+## 37. Explain the purpose of the fork() system call in creating copy-on-write (COW) processes.
+```
+In this child is initially created in parent process memory after it will copy to as different memory
+it will help to improve the performance
+```
+## 40. Explain the concept of process context switching and its impact on system performance. 
+```
+In sheduling method when CPU time completed before the process completely executing then it will go to another process that process of switiching is called context switching
+```
+## 41.Role of clone() System Call in Creating Threads in Linux
+```
+The clone() system call in Linux is a low-level system call used to create a new process or thread.
+It is more flexible than fork() because it allows the parent process to specify which resources are shared between the parent and child.
 ```
