@@ -347,3 +347,9 @@ In sheduling method when CPU time completed before the process completely execut
 The clone() system call in Linux is a low-level system call used to create a new process or thread.
 It is more flexible than fork() because it allows the parent process to specify which resources are shared between the parent and child.
 ```
+## 43. Explain the difference between process creation using fork() and pthread_create(). 
+```
+fork() system call used to create a child process with separate memory
+in pthread_create() used to create a new thread with same or shared memory.
+```
+
