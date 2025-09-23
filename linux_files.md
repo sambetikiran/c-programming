@@ -128,3 +128,48 @@ int main()
         close(kd);
 }
 ```
+## program to remove the extra spaces in a string .
+```c
+#include<string.h>
+#include<stdio.h>
+#include<unistd.h>
+#include<fcntl.h>
+int main()
+{
+        int fd=open("create2.txt",O_RDONLY,0644);
+        int dst=open("space_clear1.txt",O_WRONLY|O_CREAT|O_TRUNC,0644);
+        char ch;
+        ssize_t n;
+        char str[100];
+        int k=0;
+        while((n=read(fd,&ch,1))>0)
+        {
+                str[k++]=ch;
+        }
+        str[k]='\0';
+        char new[100];
+        int l=0;
+        int count=0;
+        int flag=0;
+        for(int i=0;i<k;i++)
+        {
+                if(str[i]!=' ')
+                {
+                        new[l++]=str[i];
+                        flag=0;
+                }
+                else
+                {
+                        if(flag==0)
+                        {
+                                new[l++]=' ';
+                                flag=1;
+                        }
+                }
+        }
+        new[l]='\0';
+        write(dst,new,l);
+        close(fd);
+        close(dst);
+}
+```
