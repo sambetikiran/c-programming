@@ -100,3 +100,56 @@ int main()
         pthread_join(t1,NULL);
 }
 ```
+## 7.Implement a C program to create a thread that calculates the square of a number? 
+```c
+#include<pthread.h>
+void *square(void *arg)
+{
+        int a=10;
+        int sq=a*a;
+        printf("square is %d\n",sq);
+}
+int main()
+{
+        pthread_t sqr;
+        pthread_create(&sqr,NULL,square,NULL);
+        pthread_join(sqr,NULL);
+}
+```
+## 10.Implement a C program to create a thread that checks if a given string is a palindrome?
+```c
+#include<stdio.h>
+#include<pthread.h>
+#include<string.h>
+void *palind(void *arg)
+{
+        char *str=(char *)arg;
+        int len=strlen(str);
+        int flag=1;
+        for(int i=0;i<len;i++)
+        {
+                if(str[i]!=str[len-i-1])
+                {
+                        flag=0;
+                        break;
+                }
+        }
+        if(flag)
+        {
+                printf("it is palindrome");
+        }
+        else
+        {
+                printf("it is not palindrome");
+        }
+}
+int main()
+{
+        pthread_t pal;
+        char str[100];
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        pthread_create(&pal,NULL,palind,&str);
+        pthread_join(pal,NULL);
+}
+```
