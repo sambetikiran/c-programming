@@ -173,5 +173,27 @@ int main()
         pthread_mutex_destroy(&lock);
 }
 ```
-##
+## 12.Develop a C program to create two threads that print their thread IDs and synchronize their output? 
 ```c
+#include<stdio.h>
+#include<pthread.h>
+pthread_mutex_t lock;
+void *create(void *arg)
+{
+        pthread_mutex_lock(&lock);
+        printf("the thread of ID is%ld\n",pthread_self());
+        pthread_mutex_unlock(&lock);
+}
+int main()
+{
+        pthread_t tid[2];
+        for(int i=0;i<2;i++)
+        {
+                pthread_create(&tid[i],NULL,create,NULL);
+        }
+        for(int i=0;i<2;i++)
+        {
+                pthread_join(tid[i],NULL);
+        }
+}
+```
