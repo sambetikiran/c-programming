@@ -197,3 +197,58 @@ int main()
         }
 }
 ```
+## 14.Write a C program to create a thread that performs addition of two numbers with mutex locks?
+```c
+#include<stdio.h>
+#include<pthread.h>
+pthread_mutex_t lock;
+void *threadfun(void *arg)
+{
+        pthread_mutex_lock(&lock);
+        int a=10;
+        int b=20;
+        int add=a+b;
+        printf("%d\n",add);
+        pthread_mutex_unlock(&lock);
+}
+int main()
+{
+        pthread_t num;
+        pthread_create(&num,NULL,threadfun,NULL);
+        pthread_join(num,NULL);
+}
+```
+## 15.Implement a C program to create two threads that increment and decrement a shared variable, respectively, using mutex locks? 
+```c
+#include<stdio.h>
+#include<pthread.h>
+#include<unistd.h>
+pthread_mutex_t lock;
+int num=0;
+void *increment(void *arg)
+{
+        pthread_mutex_lock(&lock);
+        num++;
+        printf("%d\n",num);
+        sleep(1);
+        pthread_mutex_unlock(&lock);
+}
+void *decrement(void *arg)
+{
+        pthread_mutex_lock(&lock);
+        num++;
+        printf("%di\n",num);
+        sleep(1);
+        pthread_mutex_unlock(&lock);
+}
+int main()
+{
+        pthread_t inc,dec;
+        pthread_create(&inc,NULL,increment,NULL);
+        pthread_create(&dec,NULL,increment,NULL);
+        pthread_join(inc,NULL);
+        pthread_join(dec,NULL);
+}
+```
+## 
+```c
