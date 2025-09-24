@@ -1,4 +1,4 @@
-## program to print HELLO WORLD
+## 1.program to print HELLO WORLD
 ```c
 #include<stdio.h>
 #include<string.h>
@@ -14,7 +14,7 @@ int main()
         pthread_join(tid,NULL);
 }
 ```
-## Create 5 threads, each printing its own thread ID.
+## 2.Create 5 threads, each printing its own thread ID.
 ```c
 #include<stdio.h>
 #include<pthread.h>
@@ -41,7 +41,7 @@ int main()
         }
 }
 ```
-## Write a program where the main thread waits for a child thread using pthread_join().
+## 3.Write a program where the main thread waits for a child thread using pthread_join().
 ```c
 #include<stdio.h>
 #include<pthread.h>
@@ -61,5 +61,42 @@ int main()
 	}
 	pthread_join(tid,NULL);
 	printf("main thread is id=%lu\n",pthread_self());
+}
+```
+## 8.Write a C program to create a thread that prints the current date and time?
+```c
+#include<stdio.h>
+#include<time.h>
+#include<pthread.h>
+struct datetime
+{
+        int day;
+        int year;
+        int month;
+        int second;
+        int hour;
+        int minute;
+};
+void *thread_fun(void *arg)
+{
+        time_t now;
+        struct tm *local;
+        struct datetime dt;
+        time(&now);
+        local=localtime(&now);
+        dt.day=local->tm_mday;
+        dt.year=local->tm_year+1900;
+        dt.month=local->tm_mon+1;
+        dt.second=local->tm_sec;
+        dt.hour=local->tm_hour-12;
+        dt.minute=local->tm_min;
+        printf("current date is--%d/%d/%d\n",dt.day,dt.month,dt.year);
+        printf("current time is--%d:%d:%d\n",dt.hour,dt.minute,dt.second);
+}
+int main()
+{
+        pthread_t t1;
+        pthread_create(&t1,NULL,thread_fun,NULL);
+        pthread_join(t1,NULL);
 }
 ```
