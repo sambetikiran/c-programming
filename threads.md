@@ -61,4 +61,5 @@ int main()
 	}
 	pthread_join(tid,NULL);
 	printf("main thread is id=%lu\n",pthread_self());
-}```
+}
+```
