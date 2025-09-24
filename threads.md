@@ -153,3 +153,25 @@ int main()
         pthread_join(pal,NULL);
 }
 ```
+## 1.Write a C program to create a thread that prints "Hello, World!" with thread synchronization? 
+```c
+#include<stdio.h>
+#include<string.h>
+#include<pthread.h>
+pthread_mutex_t lock;
+void *create(void *arg)
+{
+        pthread_mutex_lock(&lock);
+        printf("hello,world!\n");
+        pthread_mutex_unlock(&lock);
+}
+int main()
+{
+        pthread_t t1;
+        pthread_create(&t1,NULL,create,NULL);
+        pthread_join(t1,NULL);
+        pthread_mutex_destroy(&lock);
+}
+```
+##
+```c
