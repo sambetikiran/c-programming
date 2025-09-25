@@ -250,5 +250,53 @@ int main()
         pthread_join(dec,NULL);
 }
 ```
-## 
+## 17.Implement a C program to create a thread that prints prime numbers up to a given limit with mutex locks? 
 ```c
+#include<stdio.h>
+#include<unistd.h>
+#include<pthread.h>
+int num[100];
+int current=2;
+pthread_mutex_t lock;
+int isprime(int num)
+{
+        int flag=1;
+        for(int i=2;i<num/2;i++)
+        {
+                if(num%i==0)
+                {
+                        flag=0;
+                        return 0;
+                }
+        }
+        return 1;
+}
+void *prime(void *arg)
+{
+        int lim=*(int*)arg;
+        while(1)
+        {
+                pthread_mutex_lock(&lock);
+                if(current>lim)
+                {
+                        pthread_mutex_unlock(&lock);
+                        break;
+                }
+                if(isprime(current))
+                {
+                        printf("%d\t",current);
+                }
+                pthread_mutex_unlock(&lock);
+                current++;
+        }
+}
+
+int main()
+{
+        pthread_mutex_init(&lock,NULL);
+        pthread_t tid;
+        int limit=100;
+        pthread_create(&tid,NULL,prime,&limit);
+        pthread_join(tid,NULL);
+}
+```
