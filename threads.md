@@ -386,3 +386,37 @@ int main()
         pthread_mutex_unlock(&lock);
 }
 ```
+## 24.Write a C program to create a thread that generates a random array of integers?
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<pthread.h>
+#include<time.h>
+#define MAX 10
+int arr[MAX];
+pthread_mutex_t lock;
+void *array(void *arg)
+{
+        srand(time( NULL));
+        pthread_mutex_lock(&lock);
+        for(int i=0;i<MAX;i++)
+        {
+                arr[i]=rand()%100;
+        }
+        pthread_mutex_unlock(&lock);
+}
+int main()
+{
+        pthread_t ran;
+        pthread_create(&ran,NULL,array,NULL);
+        pthread_join(ran,NULL);
+        pthread_mutex_lock(&lock);
+        printf("random number\n");
+        for(int i=0;i<MAX;i++)
+        {
+                printf("%d\t",arr[i]);
+        }
+        pthread_mutex_unlock(&lock);
+
+}
+```
