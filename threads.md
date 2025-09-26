@@ -420,3 +420,31 @@ int main()
 
 }
 ```
+## 26.Develop a C program to create a thread that calculates the greatest common divisor (GCD) of two numbers? 
+```c
+#include<stdio.h>
+#include<pthread.h>
+pthread_mutex_t lock;
+int a=12;
+int b=18;
+void *divsor(void *arg)
+{
+        pthread_mutex_lock(&lock);
+        while(b!=0)
+        {
+                int temp=b;
+                b=a%b;
+                a=temp;
+        }
+        pthread_mutex_unlock(&lock);
+}
+int main()
+{
+        pthread_t gcd;
+        pthread_create(&gcd,NULL,divsor,NULL);
+        pthread_join(gcd,NULL);
+        pthread_mutex_lock(&lock);
+        printf("GCD IS %d\n",a);
+        pthread_mutex_unlock(&lock);
+}
+```
