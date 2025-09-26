@@ -335,3 +335,54 @@ int main()
         pthread_mutex_destroy(&lock);
 }
 ```
+## 22.Develop a C program to create a thread that calculates the area of a triangle?
+```c
+#include<stdio.h>
+#include<unistd.h>
+#include<pthread.h>
+pthread_mutex_t lock;
+void *area(void *arg)
+{
+        int base=10;
+        int height=20;
+        pthread_mutex_lock(&lock);
+        int area=(base*height)/2;
+        printf("area of triangle is %d\n",area);
+        pthread_mutex_unlock(&lock);
+}
+int main()
+{
+        pthread_t at;
+        pthread_create(&at,NULL,area,NULL);
+        pthread_join(at,NULL);
+}
+```
+## 23.Write a C program to create a thread that calculates the sum of squares of numbers from 1 to 100? 
+```c
+#include<stdio.h>
+#include<pthread.h>
+pthread_mutex_t lock;
+int sum=0;
+void *square(void *arg)
+{
+        int limit=*(int*)arg;
+        pthread_mutex_lock(&lock);
+        for(int i=1;i<=limit;i++)
+        {
+                int  num=i*i;
+                sum=sum+num;
+        }
+        pthread_mutex_unlock(&lock);
+}
+int main()
+{
+        pthread_mutex_init(&lock,NULL);
+        pthread_t sq;
+        int limit=100;
+        pthread_create(&sq,NULL,square,&limit);
+        pthread_join(sq,NULL);
+        pthread_mutex_lock(&lock);
+        printf("sum 0f square is %d",sum);
+        pthread_mutex_unlock(&lock);
+}
+```
