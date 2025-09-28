@@ -513,3 +513,29 @@ int main()
         pthread_mutex_unlock(&lock);
 }
 ```
+## 34.Write a C program to create a thread that checks if a given number is a perfect square?
+```c
+#include<stdio.h>
+#include<pthread.h>
+pthread_mutex_t lock;
+void *square(void *arg)
+{
+        int two=2;
+        int per=1;
+        for(int i=0;i<10;i++)
+        {
+                int mul=per*two;
+                per=mul;
+                pthread_mutex_lock(&lock);
+                printf("perfect squares are %d\n",per);
+                pthread_mutex_unlock(&lock);
+        }
+}
+
+int main()
+{
+        pthread_t perfect;
+        pthread_create(&perfect,NULL,square,NULL);
+        pthread_join(perfect,NULL);
+}
+```
