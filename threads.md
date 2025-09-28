@@ -539,3 +539,109 @@ int main()
         pthread_join(perfect,NULL);
 }
 ```
+## 35.Write a C program to create a thread that calculates the sum of digits of a given number?
+```c
+#include<stdio.h>
+#include<pthread.h>
+int sum=0;
+pthread_mutex_t lock;
+void *summ(void *arg)
+{
+        int num;
+        printf("enter the number\n");
+        scanf("%d",&num);
+        pthread_mutex_lock(&lock);
+        for(int i=num;i>0;i=i/10)
+        {
+                int mod=i%10;
+                sum=sum+mod;
+        }
+        pthread_mutex_unlock(&lock);
+}
+int main()
+{
+        pthread_t dig;
+        pthread_create(&dig,NULL,summ,NULL);
+        pthread_join(dig,NULL);
+        pthread_mutex_lock(&lock);
+        printf("sum of digits are %d\n",sum);
+        pthread_mutex_unlock(&lock);
+}
+```
+## 37.Develop a C program to create a thread that finds the maximum element in an array?
+```c
+#include<stdio.h>
+#include<pthread.h>
+pthread_mutex_t lock;
+int maxi=0;
+void *maximum(void *arg)
+{
+        int num;
+        printf("enter the number\n");
+        scanf("%d",&num);
+        int arr[num];
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        for(int i=0;i<num;i++)
+        {
+                for(int j=0;j<num;j++)
+                {
+                        if(arr[i]<arr[j])
+                        {
+                                pthread_mutex_lock(&lock);
+                                maxi=arr[j];
+                                pthread_mutex_unlock(&lock);
+                        }
+                }
+        }
+}
+
+
+
+int main()
+{
+        pthread_t max;
+        pthread_create(&max,NULL,maximum,NULL);
+        pthread_join(max,NULL);
+        pthread_mutex_lock(&lock);
+        printf("maximum number is %d\n",maxi);
+        pthread_mutex_lock(&lock);
+}
+```
+## 40.Develop a C program to create a thread that calculates the average of numbers in an array?40.Develop a C program to create a thread that calculates the average of numbers in an array?
+```c
+#include<stdio.h>
+#include<pthread.h>
+int avg=0;
+pthread_mutex_t lock;
+void *average(void *arg)
+{
+        int num;
+        printf("enter the number\n");
+        scanf("%d",&num);
+        int arr[num];
+        for(int i=0;i<num;i++)
+        {
+                scanf("%d",&arr[i]);
+        }
+        int sum=0;
+        for(int i=0;i<num;i++)
+        {
+                sum=sum+arr[i];
+        }
+        pthread_mutex_lock(&lock);
+        avg=sum/num;
+        pthread_mutex_unlock(&lock);
+}
+int main()
+{
+        pthread_t cal;
+        pthread_create(&cal,NULL,average,NULL);
+        pthread_join(cal,NULL);
+        pthread_mutex_lock(&lock);
+        printf("average of an array is %d",avg);
+        pthread_mutex_unlock(&lock);
+}
+```
