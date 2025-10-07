@@ -645,3 +645,36 @@ int main()
         pthread_mutex_unlock(&lock);
 }
 ```
+## 49.Develop a C program to create a thread that reverses a given string? 
+```c
+#include<stdio.h>
+#include<string.h>
+#include<pthread.h>
+pthread_mutex_t lock;
+void *reverse(void *arg)
+{
+        char *str=(char*) arg;
+        int len=strlen(str);
+        for(int i=0;i<len;i++)
+        {
+                pthread_mutex_unlock(&lock);
+                for(int j=0;j<len-i-1;j++)
+                {
+                        char temp=str[j];
+                        str[j]=str[j+1];
+                        str[j+1]=temp;
+                }
+                pthread_mutex_lock(&lock);
+        }
+}
+int main()
+{
+        char str[]="kiran";
+        pthread_t re;
+        pthread_create(&re,NULL,reverse,&str);
+        pthread_join(re,NULL);
+        pthread_mutex_unlock(&lock);
+        printf("%s",str);
+        pthread_mutex_lock(&lock);
+}
+```
