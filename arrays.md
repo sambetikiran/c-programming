@@ -1909,4 +1909,29 @@ int main()
 return 0;
 }
 ```
+## program to print the leaders of an array
+```c
+#include<stdio.h>
+int main()
+{
+        int arr[6]={12,10,23,13,0,5};
+        int flag=1;
+        for(int i=0;i<6;i++)
+        {
+                flag=1;
+                for(int j=i+1;j<6;j++)
+                {
+                        if(arr[i]<arr[j])
+                        {
+                                flag=0;
+                                break;
+                        }
+                }
+                if(flag)
+                {
+                        printf("%d\n",arr[i]);
+                }
+        }
+}
+```
 
