@@ -173,3 +173,21 @@ int main()
         close(dst);
 }
 ```
+## 3 Implement a C program to create a new directory named "Test" in the current directory? 
+```c
+#include<stdio.h>
+#include<sys/stat.h>
+#include<sys/types.h>
+int main()
+{
+        int stats=mkdir("test",0755);
+        if(stats)
+        {
+                printf("created\n");
+        }
+        else
+        {
+                printf("not created\n");
+        }
+}
+```
