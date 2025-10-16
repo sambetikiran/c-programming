@@ -1934,4 +1934,50 @@ int main()
         }
 }
 ```
-
+## program to perfrom the stack of push pull operation
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 100
+int push(int arr[MAX],int k)
+{
+        int num;
+        printf("enter the number");
+        scanf("%d",&num);
+        arr[k]=num;
+        return k+1;
+}
+int pull(int arr[MAX],int k)
+{
+        if(k==0)
+        {
+                return k;
+        }
+        printf("pull element:%d\n",arr[k-1]);
+        arr[k-1]=0;
+        return k-1;
+}
+int main()
+{
+        int arr[MAX];
+        int choose;
+        int k=0;
+        while(1)
+        {
+                printf("enter the push=1,pull=2,breakk=0  :");
+                scanf("%d",&choose);
+                switch(choose)
+                {
+                        case 1:
+                                k=push(arr,k);
+                                break;
+                        case 2:
+                                k=pull(arr,k);
+                                break;
+                        case 0:
+                                printf("out\n");
+                                exit(0);
+                }
+        }
+}
+```
