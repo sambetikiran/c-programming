@@ -1981,3 +1981,27 @@ int main()
         }
 }
 ```
+## program to print maximum sum of an non adjacent in an array
+```c
+#include<stdio.h>
+int main()
+{
+        int arr[5]={1,2,3,4,5};
+        int num=5;
+        int max=0;
+        for(int i=0;i<(num+1)/2;i++)
+        {
+                for(int j=i+2;j<num;j++)
+                {
+                        int sum=0;
+                        sum=arr[i]+arr[j];
+                        if(max<sum)
+                        {
+                                max=sum;
+                        }
+                }
+        }
+        printf("%d\n",max);
+}
+```
+
