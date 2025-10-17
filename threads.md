@@ -678,3 +678,41 @@ int main()
         pthread_mutex_lock(&lock);
 }
 ```
+## 58.Implement a multithreaded file copy program in C. Create multiple threads to read from one file and write to another file concurrently?
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<fcntl.h>
+#include<unistd.h>
+#include<pthread.h>
+pthread_mutex_t lock;
+void *copy(void *arg)
+{
+        int fd=open("kiran.txt",O_RDONLY);
+        int sd=open("q58.txt",O_WRONLY|O_CREAT,0644);
+        char buf;
+        pthread_mutex_lock(&lock);
+        while(read(fd,&buf,1)>0)
+        {
+                write(sd,&buf,1);
+        }
+        pthread_mutex_unlock(&lock);
+        close(sd);
+        close(fd);
+}
+int main()
+{
+        pthread_t p1;
+        pthread_create(&p1,NULL,copy,NULL);
+        pthread_join(p1,NULL);
+        pthread_mutex_lock(&lock);
+        int sd=open("q58.txt",O_RDONLY,0644);
+        char buf;
+        while(read(sd,&buf,1)>0)
+        {
+                printf("%c",buf);
+        }
+        close(sd);
+}
+```
