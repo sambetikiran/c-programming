@@ -1,3 +1,63 @@
+## 1. What is meant by an IPC Mechanism?
+```
+Inter-Process Communication (IPC) mechanism is a method that allows different processes to exchange data and information with each other, either within the same system or across a network.
+```
+## 2. Why we use IPC Mechanism?
+```
+IPC is used to enable communication and data sharing between processes, synchronize their execution, and coordinate tasks to achieve parallel processing or modular program design.
+```
+## 3. What are the types of IPC Mechanisms?
+```
+The main types of IPC mechanisms are:
+* Pipes
+* named pipes
+* Message Queues
+* Shared Memory
+* Semaphore
+```
+## 4. What is meant by “unicast” and “multicast” IPC?
+```
+Unicast IPC: Communication occurs between a single sender and a single receiver process.
+Multicast IPC: Communication occurs between one sender and multiple receiver processes simultaneously.
+```
+5. What is meant by PIPES?
+```
+Pipes are a unidirectional IPC mechanism that allows one process to send data to another in a sequential stream, typically between a parent and child process.
+```
+6. What is meant by Blocking Calls?
+```
+A blocking call is an operation that makes a process wait until the requested operation (like reading or writing data) completes before continuing execution.
+```
+## 7. What are the types of Blocking Calls?
+```
+The main types are:
+Blocking I/O: Process waits until operation completes.
+Non-blocking I/O: Process continues execution even if the operation isn’t complete.
+```
+## 8. What are the different types of I/O Calls?
+```
+The main I/O call types are:
+Blocking I/O
+Non-blocking I/O
+Asynchronous I/O
+Synchronous I/O
+```
+## 9. What are the I/O calls we are used in IPC Mechanisms?
+```
+In IPC, the common I/O system calls used are:
+* `read()`
+* `write()`
+* `open()`
+* `close()`
+* `pipe()`
+* `mkfifo()`
+```
+## 10. What are the Blocking Calls used in IPC?
+```
+The blocking calls used in IPC are mainly:
+* `read()` — waits until data is available.
+* `write()` — waits until the data is written to the pipe or queue.
+```
 ## 41. Implement a program that uses pipes for communication between a parent and child process. Show how data can be passed between processes using pipes.
 ```c
 #include<stdio.h>
