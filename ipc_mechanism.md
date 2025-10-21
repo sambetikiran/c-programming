@@ -38,3 +38,40 @@ int main()
         }
 }
 ```
+## 43. Implement a program that uses Named pipes for communication between two processes. 
+```c
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<fcntl.h>
+#include<sys/stat.h>
+int main()
+{
+        mkfifo("myfifo",0666);
+        char str[100];
+        printf("enter the input\n");
+        fgets(str,sizeof(str),stdin);
+        str[strcspn(str,"\n")]='\0';
+        int fd=open("myfifo",O_WRONLY);
+        printf("write process\n");
+        write(fd,str,strlen(str)+1);
+        close(fd);
+}
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<fcntl.h>
+#include<sys/stat.h>
+int main()
+{
+        char buf[100];
+        mkfifo("myfifo",0666);
+        int fd=open("myfifo",O_RDONLY);
+        printf("read process\n");
+        read(fd,buf,sizeof(buf));
+        printf("%s\n",buf);
+}
+```
+
