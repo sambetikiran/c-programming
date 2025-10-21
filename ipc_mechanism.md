@@ -40,6 +40,7 @@ int main()
 ```
 ## 43. Implement a program that uses Named pipes for communication between two processes. 
 ```c
+// write process
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
@@ -58,6 +59,7 @@ int main()
         write(fd,str,strlen(str)+1);
         close(fd);
 }
+// read process
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
