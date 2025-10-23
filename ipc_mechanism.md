@@ -194,7 +194,7 @@ int main()
         printf("recived msg is %s \n",txbuf+16);
 }
 ```
-## 46.
+## 48. Write a C program where two processes communicate using message queues.Implement sending and receiving messages between the processes using msgget,msgsnd, and msgrcv. 
 ```c
 //server send and recv
 #include<stdio.h>
