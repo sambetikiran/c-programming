@@ -1273,3 +1273,110 @@ int main()
         display();
 }
 ```
+## 16.Write a C program to create a singly linked list and perform display, find middle, and reverse operations using a menu-driven approach.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+        int data;
+        struct node *nxt;
+};
+struct node *phead=NULL;
+void create(int d)
+{
+        struct node *ptrav,*pnew;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        if(pnew==NULL)
+        {
+                printf("malloc error");
+                return;
+        }
+        pnew->data=d;
+        pnew->nxt=NULL;
+        if(phead==NULL)
+        {
+                phead=pnew;
+        }
+        else
+        {
+                ptrav=phead;
+                while(ptrav->nxt!=NULL)
+                {
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void middle()
+{
+        struct node *fast,*slow;
+        fast=phead;
+        slow=phead;
+        while(slow->nxt!=NULL&&fast->nxt!=NULL)
+        {
+                fast=fast->nxt->nxt;
+                slow=slow->nxt;
+        }
+        printf("middle is %d\n",slow->data);
+}
+void display()
+{
+        struct node *ptrav=phead;
+        while(ptrav!=NULL)
+        {
+                printf("%d->",ptrav->data);
+                ptrav=ptrav->nxt;
+        }
+}
+void reverse()
+{
+        struct node *next,*prev,*curr;
+        prev=NULL;
+        curr=phead;
+        while(curr!=NULL)
+        {
+                next=curr->nxt;
+                curr->nxt=prev;
+                prev=curr;
+                curr=next;
+        }
+        phead=prev;
+}
+
+
+
+
+
+
+int main()
+{
+        int node=5;
+        int data;
+        printf("enter ");
+        for(int i=0;i<node;i++)
+        {
+                scanf("%d",&data);
+                create(data);
+        }
+        while(1)
+        {
+                int choose;
+                printf("enter the choose");
+                scanf("%d",&choose);
+                switch(choose)
+                {
+                        case 1:
+                                display();
+                                break;
+                        case 2:
+                                middle();
+                                break;
+                        case 3:
+                                reverse();
+                        case 0:
+                                exit(0);
+                }
+        }
+}
+```
