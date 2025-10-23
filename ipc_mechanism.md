@@ -136,4 +136,61 @@ int main()
         printf("%s\n",buf);
 }
 ```
-
+## 44. Write a C program to create a message queue using the msgget system call. Ensure that the program checks for errors during the creation process. 
+```c
+#include<stdio.h>
+#include<sys/ipc.h>
+#include<sys/msg.h>
+#include<stdlib.h>
+# define KEY 1220
+int main()
+{
+        int msgid=msgget(KEY,0666|IPC_CREAT);
+        if(msgid<0)
+        {
+                perror("msgget failed");
+                exit(1);
+        }
+        printf("msg queue object is generated\n");
+}
+```
+## 4545. Develop two separate C programs, one for sending messages and the other for receiving messages through a created message queue. 
+```c
+//unidirectional sending info
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<sys/msg.h>
+#include<sys/ipc.h>
+#include<unistd.h>
+#define KEY 1220
+#define MSG_TYPE 1
+int main()
+{
+        char rxbuf[100];
+        char txuf[100];
+        int msgid=msgget(KEY,0666|IPC_CREAT);
+        long *ptr=(long*)txbuf;
+        ptr[0]=MSG_TYPE;
+        ptr[1]=getpid();
+        printf("sending the msg");
+        scanf("%s",txbuf+16);
+        msgsnd(msgid,txbuf,8+strlen(txbuf+16),0);
+}
+//unidirectional reciving info
+#include<stdio.h>
+#include<stdlib.h>
+#include<sys/msg.h>
+#include<sys/ipc.h>
+#include<string.h>
+#define KEY 1220
+#define MSG_TYPE 1
+int main()
+{
+        int msgid=msgget(KEY,0666);
+        char txbuf[100];
+        printf("client is connected");
+        msgrcv(msgid,txbuf,sizeof(txbuf),MSG_TYPE,0);
+        printf("recived msg is %s \n",txbuf+16);
+}
+```
