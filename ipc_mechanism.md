@@ -194,3 +194,55 @@ int main()
         printf("recived msg is %s \n",txbuf+16);
 }
 ```
+## 46.
+```c
+//server send and recv
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<sys/msg.h>
+#include<sys/ipc.h>
+#define KEY 1220
+#define MSG_TYPE 6
+int main()
+{
+        char rxbuf[100];
+        char txbuf[100];
+        int msgid=msgget(KEY,IPC_CREAT|0666);
+        printf("msg rcv from client\n");
+        msgrcv(msgid,rxbuf,sizeof(rxbuf),MSG_TYPE,0);
+        printf("%s \n",rxbuf+16);
+        long *ptr1=(long*)txbuf;
+        long *ptr2=(long*)rxbuf;
+        ptr1[0]=ptr2[1];
+        printf("msg is sending to client");
+        fgets(txbuf+8,sizeof(txbuf)-8,stdin);
+        txbuf[strcspn(txbuf,"\n")]='\0';
+        msgsnd(msgid,txbuf,8+strlen(txbuf+8),0);
+        printf("sended");
+}
+//client recv and send
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<sys/msg.h>
+#include<sys/ipc.h>
+#include<unistd.h>
+#define KEY 1220
+#define MSG_TYPE 6
+int main()
+{
+        int msgid=msgget(KEY,0);
+        char txbuf[100];
+        char rxbuf[100];
+        fgets(txbuf+16,sizeof(txbuf)-16,stdin);
+        txbuf[strcspn(txbuf,"\n")]='\0';
+        long *ptr=(long*)txbuf;
+        ptr[0]=MSG_TYPE;
+        ptr[1]=getpid();
+        msgsnd(msgid,txbuf,16+strlen(txbuf+16),0);
+        msgrcv(msgid,rxbuf,sizeof(txbuf),getpid(),0);
+        printf("%s\n",rxbuf+8);
+        printf("recivied");
+}
+```
