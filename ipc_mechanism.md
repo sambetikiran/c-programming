@@ -293,3 +293,43 @@ int main()
         printf("shared memory detached");
 }
 ```
+## 53. Create a program that forks multiple processes, and each process communicates using shared memory. 
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<sys/ipc.h>
+#include<sys/shm.h>
+#include<sys/wait.h>
+#define KEY 1220
+int a=1;
+int main()
+{
+        int shmid=shmget(KEY,1024,IPC_CREAT|0666);
+        if(shmid<0)
+        {
+                perror("shmget error");
+                exit(1);
+        }
+        int *shm_mem=shmat(shmid,NULL,0);
+        int num;
+        int pid;
+        printf("enter the numbers");
+        scanf("%d",&num);
+        for(int i=0;i<num;i++)
+        {
+                pid=fork();
+                if(pid==0)
+                {
+                        (*shm_mem)++;
+                        printf("child->%d its memory is %d\n",getpid(),*shm_mem);
+                        shmdt(shm_mem);
+                        exit(0);
+                }
+        }
+        for(int i=0;i<num;i++)
+        {
+                wait(NULL);
+        }
+}
+```
