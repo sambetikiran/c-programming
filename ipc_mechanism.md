@@ -246,3 +246,50 @@ int main()
         printf("recivied");
 }
 ```
+## 51. Write a C program that initializes a shared memory segment using shmget.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<sys/ipc.h>
+#include<sys/shm.h>
+#define KEY 1220
+
+int main()
+{
+        int shmid=shmget(KEY,1024,IPC_CREAT|0666);
+        if(shmid==-1)
+        {
+                perror("shmget error");
+                return 0;
+        }
+        int *shmem=shmat(shmid,NULL,0);
+        *shmem=32;
+        printf("%d\n",*shmem);
+
+        shmdt(shmem);
+}
+```
+## 52. Develop a program that attaches to a previously created shared memory segment using shmat and detaches using shmdt.
+```c
+#include<stdio.h>
+#include<sys/ipc.h>
+#include<sys/shm.h>
+#define KEY 1220
+int main()
+{
+        int shmid=shmget(KEY,1024,IPC_CREAT|0666);
+        if(shmid==-1)
+        {
+                perror("shmget error");
+        }
+        int *shm_mem=shmat(shmid,NULL,0);
+        printf("address is %p\n",shm_mem);
+        printf("data=%d\n",*shm_mem);
+        shmdt(shm_mem);
+        if(shmdt<0)
+        {
+                perror("not detatched");
+        }
+        printf("shared memory detached");
+}
+```
