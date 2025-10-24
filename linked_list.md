@@ -1484,3 +1484,114 @@ int main()
         }
 }
 ```
+## 18. program to intersection of two linked list and detection in last node
+```c
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+        int data;
+        struct node *nxt;
+};
+struct node *phead1=NULL;
+struct node *phead2=NULL;
+void create(int d,struct node **phead)
+{
+        struct node *ptrav,*pnew;
+        pnew=(struct node*)malloc(sizeof(struct node));
+        pnew->data=d;
+        pnew->nxt=NULL;
+        if(*phead==NULL)
+        {
+                *phead=pnew;
+        }
+        else
+        {
+                ptrav=*phead;
+                while(ptrav->nxt!=NULL)
+                {
+                        ptrav=ptrav->nxt;
+                }
+                ptrav->nxt=pnew;
+        }
+}
+void display(struct node *ptrav)
+{
+        while(ptrav!=NULL)
+        {
+                printf("%d->",ptrav->data);
+                ptrav=ptrav->nxt;
+        }
+        printf("\n");
+}
+void inter(int d,struct node *phead,struct node *ph)
+{
+        struct node *pnew=(struct node*)malloc(sizeof(struct node));
+        while(phead->nxt!=NULL)
+        {
+                phead=phead->nxt;
+        }
+        while(ph->nxt!=NULL)
+        {
+                ph=ph->nxt;
+        }
+        pnew->data=d;
+        pnew->nxt=NULL;
+        phead->nxt=pnew;
+        ph->nxt=pnew;
+}
+void detect(struct node *phead,struct node *ptrav)
+{
+        struct node *i,*j;
+        int flag=0;
+        for(i=phead;i!=NULL;i=i->nxt)
+        {
+                for(j=ptrav;j!=NULL;j=j->nxt)
+                {
+                        if(i==j)
+                        {
+                                flag=1;
+                                break;
+                        }
+                }
+                if(flag)
+                {
+                        printf("%p address in point is %d\n",i,i->data);
+                        break;
+                }
+        }
+        if(!flag)
+        {
+                printf("not detected");
+        }
+}
+
+
+
+
+
+
+int main()
+{
+        int node,data;
+        printf("enter the node:");
+        scanf("%d",&node);
+        printf("enter the data\n");
+        for(int i=0;i<node;i++)
+        {
+                scanf("%d",&data);
+                create(data,&phead1);
+        }
+        display(phead1);
+        for(int i=0;i<node;i++)
+        {
+                scanf("%d",&data);
+                create(data,&phead2);
+        }
+        display(phead2);
+        inter(34,phead1,phead2);
+        display(phead1);
+        display(phead2);
+        detect(phead1,phead2);
+}
+```
