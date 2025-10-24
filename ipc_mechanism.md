@@ -154,7 +154,7 @@ int main()
         printf("msg queue object is generated\n");
 }
 ```
-## 4545. Develop two separate C programs, one for sending messages and the other for receiving messages through a created message queue. 
+## 45. Develop two separate C programs, one for sending messages and the other for receiving messages through a created message queue. 
 ```c
 //unidirectional sending info
 #include<stdio.h>
@@ -331,5 +331,24 @@ int main()
         {
                 wait(NULL);
         }
+}
+```
+## 54. Write a program that dynamically creates shared memory segments based on user input. 
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<sys/ipc.h>
+#include<sys/shm.h>
+#define KEY 1
+int main()
+{
+        int size;
+        printf("enter the size of number");
+        scanf("%d",&size);
+        int shmid=shmget(KEY,size,IPC_CREAT|0666);
+        int *shm_mem=shmat(shmid,NULL,0);
+        *shm_mem=16;
+        printf("the value is %d\n",*shm_mem);
+        shmdt(shm_mem);
 }
 ```
