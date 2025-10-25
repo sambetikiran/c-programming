@@ -383,5 +383,35 @@ int main()
         }
 }
 ```
-
+## 72. Write a C program to create a child process using fork() and demonstrate inter-process communication (IPC) using shared memory. 
+```c
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<sys/wait.h>
+#include<sys/ipc.h>
+#include<sys/shm.h>
+#define KEY 1220
+int main()
+{
+        int pid;
+        char *shm_mem;
+        int shmid=shmget(KEY,1024,IPC_CREAT|0666);
+        pid=fork();
+        if(pid==0)
+        {
+                shm_mem=shmat(shmid,NULL,0);
+                strcpy(shm_mem,"hello world");
+                shmdt(shm_mem);
+        }
+        else
+        {
+                wait(NULL);
+                shm_mem=shmat(shmid,NULL,0);
+                printf("%s\n",shm_mem);
+                shmdt(shm_mem);
+        }
+}
+```
 
