@@ -352,4 +352,36 @@ It is more flexible than fork() because it allows the parent process to specify 
 fork() system call used to create a child process with separate memory
 in pthread_create() used to create a new thread with same or shared memory.
 ```
+## 52. Write a C program to create a pipeline between two processes using the pipe() system call.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<sys/wait.h>
+#include<unistd.h>
+#include<string.h>
+int main()
+{
+        int fd[2];
+        int pid;
+        pipe(fd);
+        pid=fork();
+        char buf[100];
+        char msg[]="i am good";
+        if(pid==0)
+        {
+                printf("child process\n");
+                close(fd[1]);
+                read(fd[0],buf,sizeof(buf));
+                printf("%s\n",buf);
+                close(fd[0]);
+        }
+        else
+        {
+                close(fd[0]);
+                write(fd[1],msg,strlen(msg)+1);
+                close(fd[1]);
+        }
+}
+```
+
 
