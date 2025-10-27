@@ -67,3 +67,45 @@ int main() {
     return 0;
 }
 ```
+## 3. Create a C program to ignore the SIGCHLD signal temporarily. 
+```c
+#include<stdio.h>
+#include<string.h>
+#include<signal.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<sys/wait.h>
+int main()
+{
+        int pid;
+        signal(SIGCHLD,SIG_IGN);
+        pid=fork();
+        if(pid==0)
+        {
+                printf("child process id is %d",getpid());
+                exit(1);
+        }
+        printf("parent pid is %d",getpid());
+        signal(SIGCHLD,SIG_DFL);
+        sleep(2);
+        wait(NULL);
+}
+```
+## 4. Write a program to block the SIGTERM signal using sigprocmask().
+```c
+#include<stdio.h>
+#include<signal.h>
+#include<stdlib.h>
+#include<unistd.h>
+int main()
+{
+        sigset_t set;
+        sigemptyset(&set);
+        sigaddset(&set,SIGTERM);
+        sigprocmask(SIG_BLOCK,&set,NULL);
+        sleep(10);
+        printf("pid is %d\n",getpid());
+        sigprocmask(SIG_UNBLOCK,&set,NULL);
+        sleep(2);
+}
+```
