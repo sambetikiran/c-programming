@@ -234,3 +234,116 @@ int main() {
     while (1)
         pause();
 }
+```
+## 12. Write a program to handle the SIGTSTP signal (terminal stop). 
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<signal.h>
+void stop_handler(int sig)
+{
+        printf("\nPress Ctrl+Z to stop the process %d\n",getpid());
+        exit(0);
+}
+int main()
+{
+        signal(SIGTSTP,stop_handler);
+        printf("To stop the signal\n");
+        while(1)
+        {
+                sleep(1);
+        }
+}
+```
+## 13. Write a program to handle the SIGVTALRM signal (virtual timer expired).
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<signal.h>
+#include<sys/time.h>
+void vt_handler(int sig)
+{
+        printf("\nSIGVTALRM received: virtual timer expired\n");
+        exit(0);
+}
+int main()
+{
+        struct itimerval timer;
+        signal(SIGVTALRM,vt_handler);
+        timer.it_value.tv_sec=3;
+        timer.it_value.tv_usec=0;
+        timer.it_interval.tv_sec=0;
+        timer.it_interval.tv_usec=0;
+        setitimer(ITIMER_VIRTUAL,&timer,NULL);
+        printf("Virtual timer set for 3 seconds\n");
+        while(1);
+}
+```
+## 16. Create a program to handle the SIGPWR signal (power failure restart).
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<signal.h>
+void pwr_handler(int sig)
+{
+        printf("\nSIGPWR received: Power failure or restart event detected\n");
+}
+int main()
+{
+        signal(SIGPWR,pwr_handler);
+        printf("Waiting for SIGPWR signal..%d.\n",getpid());
+        while(1)
+        {
+                sleep(1);
+        }
+}
+```
+## 18. Write a program to handle the SIGSYS signal (bad system call).
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<signal.h>
+void sys_handler(int sig)
+{
+        printf("\nSIGSYS received: bad system call\n");
+        exit(0);
+}
+int main()
+{
+        signal(SIGSYS,sys_handler);
+        printf("Waiting for SIGSYS signal...\n");
+        while(1)
+        {
+                sleep(1);
+        }
+}
+```
+## 19. Write a C program to handle the SIGIO signal (I/O is possible on a descriptor).
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<signal.h>
+#include<fcntl.h>
+void io_handler(int sig)
+{
+        printf("\nSIGIO received: I/O is possible on descriptor\n");
+}
+int main()
+{
+        int fd=open("/dev/tty",O_RDONLY);
+        fcntl(fd,F_SETOWN,getpid());
+        int flags=fcntl(fd,F_GETFL);
+        fcntl(fd,F_SETFL,flags|O_ASYNC);
+        signal(SIGIO,io_handler);
+        printf("Type something to trigger SIGIO...\n");
+        while(1)
+        {
+                sleep(1);
+        }
+}
+```
