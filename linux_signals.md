@@ -109,3 +109,26 @@ int main()
         sleep(2);
 }
 ```
+## 5. Implement a C program to handle the SIGALRM signal using sigaction().
+```c
+#include<stdio.h>
+#include<string.h>
+#include<unistd.h>
+#include<stdlib.h>
+#include<signal.h>
+void signal_handler(int sig)
+{
+        printf("Waiting for SIGTERM signal... (PID: %d)\n", getpid());
+        exit(0);
+}
+int main()
+{
+        signal(SIGTERM,signal_handler);
+        printf("signal is terminate id is %d\n",getpid());
+        while(1)
+        {
+                sleep(1);
+        }
+}
+finally another terminal i have to give kill -TERM pid number
+'''
