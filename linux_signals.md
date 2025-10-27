@@ -152,3 +152,41 @@ int main()
         *ptr=10;
 }
 ```
+## 8. Create a program to handle the SIGILL signal (illegal instruction).
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<signal.h>
+void sigill_handler()
+{
+        printf("illegal instruction has been detected\n");
+        exit(1);
+}
+int main()
+{
+        signal(SIGILL,sigill_handler);
+        printf("signal has been sent\n");
+        sleep(3);
+        raise(SIGILL);
+}
+```
+## 9. Write a program to handle the SIGABRT signal (abort). 
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<signal.h>
+void abort_handler()
+{
+        printf("aborting  the signal of pid %d\n",getpid());
+}
+
+int main()
+{
+        signal(SIGABRT,abort_handler);
+        sleep(2);
+        abort();
+        printf("aborted\n");
+}
+```
