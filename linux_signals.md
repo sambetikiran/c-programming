@@ -45,3 +45,25 @@ When a process is in kernel mode, signals are held pending and delivered only af
 ## 10. Describe the behaviour of a process when it receives a SIGSEGV signal?
 
 When a process receives a `SIGSEGV` signal due to invalid memory access, it terminates by default and may produce a core dump unless a custom handler is defined.
+## 2. Implement a C program to send a custom signal to another process. 
+```c
+#include <stdio.h>
+#include <signal.h>
+#include <unistd.h>
+
+void handler(int sig) {
+    printf("Received custom signal: %d (SIGUSR1)\n", sig);
+    fflush(stdout); // ensure output appears immediately
+}
+
+int main() {
+    signal(SIGUSR1, handler);
+    printf("Waiting for SIGUSR1... (PID: %d)\n", getpid());
+    fflush(stdout);
+
+    while (1)
+        pause();  // wait until a signal arrives
+
+    return 0;
+}
+```
