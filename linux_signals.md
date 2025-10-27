@@ -210,3 +210,27 @@ int main()
         }
 }
 ```
+## 14. Write a program to handle the SIGWINCH signal (window size change).
+```c
+#include <stdio.h>
+#include <signal.h>
+#include <sys/ioctl.h>
+#include <unistd.h>
+
+void handle_sigwinch(int sig) {
+    struct winsize w;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+    printf("\nWindow size changed: %d rows, %d columns\n", w.ws_row, w.ws_col);
+    fflush(stdout);
+}
+int main() {
+    struct sigaction sa;
+    sa.sa_handler = handle_sigwinch;
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = 0;
+    sigaction(SIGWINCH, &sa, NULL);
+    printf("Resize the terminal window to trigger SIGWINCH...\n");
+    fflush(stdout);
+    while (1)
+        pause();
+}
