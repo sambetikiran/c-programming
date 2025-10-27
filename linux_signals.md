@@ -131,4 +131,24 @@ int main()
         }
 }
 finally another terminal i have to give kill -TERM pid number
-'''
+```
+## 7. Implement a program to handle the SIGSEGV signal (segmentation fault). 
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<signal.h>
+#include<unistd.h>
+void sgnl_hand()
+{
+        printf("segmentation default occure in pid %d",getpid());
+        exit(0);
+}
+int main()
+{
+        signal(SIGSEGV,sgnl_hand);
+        printf("occuring of segmentation fault\n");
+        sleep(1);
+        int *ptr=NULL;
+        *ptr=10;
+}
+```
