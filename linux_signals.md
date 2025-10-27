@@ -347,3 +347,23 @@ int main()
         }
 }
 ```
+20. Implement a C program to handle the SIGINFO signal (status request from keyboard).
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<signal.h>
+void info_handler(int sig)
+{
+        printf("\nSIGINFO received: status request from keyboard\n");
+}
+int main()
+{
+        signal(SIGINFO,info_handler);
+        printf("Press Ctrl+T to trigger SIGINFO\n");
+        while(1)
+        {
+                sleep(1);
+        }
+}
+```
