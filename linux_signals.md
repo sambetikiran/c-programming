@@ -190,3 +190,23 @@ int main()
         printf("aborted\n");
 }
 ```
+## 10. Implement a C program to handle the SIGQUIT signal.
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<signal.h>
+#include<unistd.h>
+void quit_handler(int sig)
+{
+        printf("press ctrl+ backslash to quit this process %d\n",getpid());
+        exit(0);
+}
+int main()
+{
+        signal(SIGQUIT,quit_handler);
+        while(1)
+        {
+                sleep(1);
+        }
+}
+```
