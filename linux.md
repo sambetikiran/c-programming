@@ -449,3 +449,36 @@ int main()
         }
 }
 ```
+## 96. Write a C program to create a child process using fork() and demonstrate process communication using named pipes (FIFOs).
+```c
+#include<stdio.h>
+#include<string.h>
+#include<unistd.h>
+#include<fcntl.h>
+#include<sys/stat.h>
+#include<sys/wait.h>
+#include<stdlib.h>
+int main()
+{
+        char read_msg[100],wri[100];
+        mkfifo("mfifo",0666);
+        int pid=fork();
+        if(pid==0)
+        {
+                int fd=open("mfifo",O_WRONLY);
+                fgets(wri,sizeof(wri),stdin);
+                wri[strcspn(wri,"\n")]='\0';
+                write(fd,wri,strlen(wri)+1);
+                printf("written\n");
+                close(fd);
+        }
+        else
+        {
+                int fd=open("mfifo",O_RDONLY);
+                int n=read(fd,read_msg,sizeof(read_msg));
+                wait(NULL);
+                printf("%s",read_msg);
+                close(fd);
+        }
+}
+```
