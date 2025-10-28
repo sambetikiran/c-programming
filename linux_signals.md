@@ -426,3 +426,61 @@ int main()
         raise(SIGINT);
 }
 ```
+## 32.Write a program to handle SIGALRM (alarm clock) signal for implementing a timeout mechanism in system programming.
+```c
+#include<stdio.h>
+#include<signal.h>
+#include<unistd.h>
+void tiout_handleer()
+{
+        printf("after the time out of alarm\n");
+}
+int main()
+{
+        signal(SIGALRM,tiout_handleer);
+        alarm(5);
+        char str[100];
+        fgets(str,sizeof(str),stdin);
+        printf("\n%s\n",str);
+        while(1)
+        {
+                sleep(1);
+        }
+}
+```
+## 44. Write a program on watch dog timer and it explain its working 
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<signal.h>
+void watch_dog(int sig)
+{
+        printf("the alarm will now out\n");
+}
+int main()
+{
+        signal(SIGALRM,watch_dog);
+        alarm(5);
+        int count=0;
+        while(1)
+        {
+               printf("sys running %d\n",count+1);
+                count++;
+                if(count%2==0)
+                {
+                        printf("reporting timer working sucesssfully\n");
+                }
+                sleep(1);
+                if(count==4)
+                {
+                        printf("reporting timer not working\n");
+                        while(1)
+                        {
+                                sleep(1);
+                        }
+                }
+        }
+
+}
+```
