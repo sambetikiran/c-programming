@@ -410,3 +410,19 @@ int main()
         }
 }
 ```
+## 31. Why we use raise system call explain it programmatically 
+```c
+#include<stdio.h>
+#include<signal.h>
+#include<unistd.h>
+void handler(int sig)
+{
+        printf("the signal has beem raised\n");
+}
+int main()
+{
+        signal(SIGINT,handler);
+        printf("raising the system calli%d\n",getpid());
+        raise(SIGINT);
+}
+```
