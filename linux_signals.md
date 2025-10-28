@@ -484,3 +484,26 @@ int main()
 
 }
 ```
+## 46. Write a program to demonstrate the use of sigaction() for handling signals.
+```c
+#include<stdio.h>
+#include<unistd.h>
+#include<stdlib.h>
+#include<signal.h>
+void handler(int sig)
+{
+        printf("sig action \n");
+}
+int main()
+{
+        struct sigaction sa;
+        sa.sa_handler=handler;
+        sa.sa_flags=0;
+        sigemptyset(&sa.sa_mask);
+        sigaction(SIGINT,&sa,NULL);
+        while(1)
+        {
+                sleep(1);
+        }
+}
+```
