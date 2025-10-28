@@ -191,3 +191,34 @@ int main()
         }
 }
 ```
+## 16. Write a C program to append "Goodbye!" to the end of an existing file named "message.txt"? 
+```c
+#include<stdio.h>
+#include<fcntl.h>
+#include<stdlib.h>
+#include<string.h>
+int main()
+{
+        int fd=open("newfile.txt",O_WRONLY|O_APPEND);
+        char buf[100];
+        fgets(buf,sizeof(buf),stdin);
+        write(fd,buf,strlen(buf));
+}
+```
+## 17. Implement a C program to change the permissions of a file named "file.txt" to read only? 
+```c
+#include<stdio.h>
+#include<sys/stat.h>
+int main()
+{
+        int ret=chmod("file.txt",0644);
+        if(ret>=0)
+        {
+                printf("changed the file permission\n");
+        }
+        else
+        {
+                printf("not changed the permissioni\n");
+        }
+}
+```
