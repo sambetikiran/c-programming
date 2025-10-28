@@ -367,3 +367,45 @@ int main()
         }
 }
 ```
+## 28. Write a program to demonstrate how to block signals using sigprocmask(). 
+```c
+#include<stdio.h>
+#include<signal.h>
+#include<stdlib.h>
+#include<unistd.h>
+void handler(int sig)
+{
+        printf("handler is producing after 10 seconds\n");
+}
+int main()
+{
+        sigset_t set;
+        signal(SIGINT,handler);
+        sigemptyset(&set);
+        sigaddset(&set,SIGINT);
+        sigprocmask(SIG_BLOCK,&set,NULL);
+        sleep(10);
+        sigprocmask(SIG_UNBLOCK,&set,NULL);
+}
+```
+## 29  Write a program to implement a timer using signals. 
+```c
+#include<stdio.h>
+#include<unistd.h>
+#include<signal.h>
+void handler(int sig)
+{
+        printf("the alaram time is set to %d",sig);
+}
+int main()
+{
+        signal(SIGALRM,handler);
+        printf("alaram is set to 5 sec");
+        alarm(5);
+        while(1)
+        {
+                printf("waiting\n");
+                sleep(1);
+        }
+}
+```
