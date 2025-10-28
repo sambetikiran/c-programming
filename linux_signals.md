@@ -545,3 +545,47 @@ int main()
         }
 }
 ```
+## 52. Write a program to demonstrate handling multiple signals using sigaction(). 
+```c
+#include<stdio.h>
+#include<signal.h>
+#include<stdlib.h>
+#include<unistd.h>
+void handler(int sig)
+{
+        switch(sig)
+        {
+                case SIGINT:
+                        printf("SIGINT id number is %d\n",sig);
+                        break;
+                case SIGTERM:
+                        printf("SIGTERM,id number is %d\n",sig);
+                        break;
+                case SIGUSR1:
+                        printf("SIGUSR1,id number is %d\n",sig);
+                        break;
+                case SIGUSR2:
+                        printf("SIGUSR2,id number is %d\n",sig);
+                        break;
+                default:
+                        printf("invalid\n");
+                        break;
+        }
+}
+
+int main()
+{
+        struct sigaction sa;
+        sa.sa_handler=handler;
+        sa.sa_flags=0;
+        sigemptyset(&sa.sa_mask);
+        sigaction(SIGINT,&sa,NULL);
+        sigaction(SIGTERM,&sa,NULL);
+        sigaction(SIGUSR1,&sa,NULL);
+        sigaction(SIGUSR2,&sa,NULL);
+        while(1)
+        {
+                pause();
+        }
+}
+```
