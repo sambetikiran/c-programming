@@ -507,3 +507,41 @@ int main()
         }
 }
 ```
+## //49. Write a program to demonstrate signal handling in a multithreaded environment. 
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<signal.h>
+#include<pthread.h>
+#include<unistd.h>
+void handler(int sig)
+{
+        printf("signal %d ofid have the pthreadis %lu\n",sig,pthread_self());
+        exit(0);
+}
+void *create(void *arg)
+{
+        int id=*(int *)arg;
+        printf("pthread %lu of pid\n",pthread_self());
+        sleep(2);
+}
+int main()
+{
+        struct sigaction sa;
+        sa.sa_handler=handler;
+        sa.sa_flags=0;
+        sigemptyset(&sa.sa_mask);
+        sigaction(SIGINT,&sa,NULL);
+        pthread_t p1,p2;
+        int id1=1;
+        int id2=2;
+        pthread_create(&p1,NULL,create,&id1);
+        pthread_create(&p2,NULL,create,&id2);
+        pthread_join(p1,NULL);
+        pthread_join(p2,NULL);
+        while(1)
+        {
+                sleep(1);
+        }
+}
+```
