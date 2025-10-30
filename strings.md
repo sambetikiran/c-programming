@@ -1467,4 +1467,59 @@ int main()
         printf("%s\n",str);
 }
 ```
+## 69. Create a C program where multiple processes write data to a named pipe, and another process reads from the named pipe and displays the received data.
+```c
+//writer1,2,3
+#include<stdio.h>
+#include<unistd.h>
+#include<string.h>
+#include<fcntl.h>
+#include<sys/stat.h>
+int main()
+{
+        char buf[100];
+        mkfifo("mfifo",0666);
+        printf("client is waiting\n");
+        int fd=open("myfifo",O_RDONLY);
+        while(1)
+        {
+                size_t ret=read(fd,buf,sizeof(buf));
+                if(ret>0)
+                {
+                buf[ret]='\0';
+                printf("%d client output  %s\n",getpid(),buf);
+                }
+                else
+                {
+                        close(fd);
+                        int fd=open("myfifo",O_RDONLY);
+                }
+        }
+       close(fd);
+}
+//reader
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<string.h>
+#include<fcntl.h>
+#include<sys/stat.h>
+int main()
+{
+        mkfifo("myfifo",0666);
+        mkfifo("mfifo",0666);
+        char str[100];
+        printf("enter the input");
+        scanf("%s",str);
+        int fd=open("myfifo",O_WRONLY);
+        int ret=write(fd,str,strlen(str)+1);
+        if(ret<0)
+        {
+                printf("mot sended");
+        }
+        close(fd);
+
+}
+```
+
 
