@@ -2004,4 +2004,52 @@ int main()
         printf("%d\n",max);
 }
 ```
+## Write a C program to maintain a set of the last three unique elements encountered in an array.
+```c
+#include<stdio.h>
+int main()
+{
+        int arr[9]={1,2,3,4,1,2,5,6,7};
+        int num=9;
+        int osc[3];
+        int count=-1;
+        for(int i=0;i<3;i++)
+        {
+                if(arr[i]!=osc[i])
+                {
+                        osc[i]=arr[i];
+                        printf("%d\t",osc[i]);
+                        count++;
+                }
+        }
+        printf("starting\n");
+        int flag;
+        for(int i=3;i<num;i++)
+        {
+                if(count==-1)
+                {
+                        count=2;
+                }
+                flag=0;
+                for(int j=0;j<3;j++)
+                {
+                        if(arr[i]==osc[j])
+                        {
+                                flag=1;
+                                break;
+                        }
+                }
+                if(!flag)
+                {
+                        osc[count]=arr[i];
+                        count--;
+                }
+        }
+        for(int i=0;i<3;i++)
+        {
+                printf("%d\t",osc[i]);
+        }
+        printf("\n");
+}
+```
 
